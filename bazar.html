@@ -6,40 +6,35 @@
     <title>Реклама • Валківський Базарчик</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="wrap">
-        <div class="header glass">
+<body class="details-page"> <div class="wrap">
+        <header class="header glass reveal">
             <div class="brand">
-                <div>
-                    <h1 class="title">Валківський Базарчик</h1>
-                    <p class="subtitle">Оберіть послугу</p>
-                </div>
+                <h1 class="title">Базарчик</h1>
             </div>
-            <a href="index.html" class="btn soft">На головну</a>
-        </div>
+            <a href="index.html" class="back-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
+                <span>Назад</span>
+            </a>
+        </header>
 
-        <div class="cards">
-            <div class="card neo">
+        <main class="cards">
+            <div class="card reveal">
                 <div class="card-head"><h3>Оренда гілки</h3></div>
-                <div class="card-body">
-                    <p class="muted">Створення персональної категорії (гілки) для вашого бізнесу. Всі ваші оголошення в одному місці.</p>
-                </div>
+                <p class="muted">Створення персональної категорії (гілки) для вашого бізнесу. Всі ваші оголошення в одному місці.</p>
                 <div class="card-foot">
                     <div class="price">450<span class="currency">грн/тиждень</span></div>
                     <button class="btn primary order-btn" data-service="Оренда гілки в Базарчику (тиждень)">Замовити</button>
                 </div>
             </div>
-            <div class="card neo">
+            <div class="card reveal">
                 <div class="card-head"><h3>Закріплення оголошення</h3></div>
-                <div class="card-body">
-                    <p class="muted">Ваше оголошення буде закріплене нагорі загального чату групи на обраний термін.</p>
-                </div>
+                <p class="muted">Ваше оголошення буде закріплене нагорі загального чату групи на обраний термін.</p>
                 <div class="card-foot">
                     <div class="price">120<span class="currency">грн/3 дні</span></div>
                     <button class="btn primary order-btn" data-service="Закріплення оголошення в Базарчику (3 дні)">Замовити</button>
                 </div>
             </div>
-        </div>
+        </main>
     </div>
     <script src="script.js"></script>
 </body>
