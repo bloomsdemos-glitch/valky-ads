@@ -1,38 +1,50 @@
-:root{
-  --bg: #e9eef7;
-  --glass: rgba(255,255,255,0.6);
-  --accent: linear-gradient(135deg,#8ab4ff 0%,#b29cff 100%);
-  --soft-shadow: 18px 18px 36px rgba(140,153,178,0.2), -10px -10px 24px rgba(255,255,255,0.9); /* Зробив тінь трохи помітнішою */
-  --radius: 20px; /* Збільшив радіус для більш "рідкого" вигляду */
-  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  color: #0b1b2b;
-}
-
-/* НОВЕ: Підключаємо шрифт Inter, як ти і хотів */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 
-*{box-sizing:border-box}
-html,body{height:100%}
+:root{
+  /* Palette */
+  --bg: #e9eef7;
+  --custom-bg: url('images/IMG_3830.jpeg'); /* <-- твій фон за замовчуванням, змінюй на свій шлях або color/gradient */
+  --frost-50: rgba(240,246,255,0.65);
+  --frost-30: rgba(240,246,255,0.45);
+  --frost-12: rgba(240,246,255,0.12);
+  --blue-100: rgba(138,180,255,0.22);
+  --outline: rgba(110,145,255,0.22);
+  --glass-edge: rgba(255,255,255,0.65);
+  --accent-grad: linear-gradient(135deg,#8ab4ff 0%,#b29cff 100%);
+  --text: #0b1b2b;
+  --muted: rgba(11,27,43,0.6);
 
-body{
-  margin:0;
+  /* Depth & shape */
+  --radius: 20px;
+  --soft-shadow-1: 22px 30px 60px rgba(50,70,90,0.09);
+  --soft-shadow-2: -8px -8px 24px rgba(255,255,255,0.9);
+  --inner-glow: inset 0 1px 0 rgba(255,255,255,0.6), inset 0 -6px 24px rgba(110,140,200,0.03);
 
-  /* background: radial-gradient(1200px 600px at 10% 10%, rgba(178,200,255,0.08), transparent),
-              radial-gradient(800px 400px at 90% 90%, rgba(160,220,220,0.04), transparent),
-              var(--bg); */
+  /* Controls */
+  --control-radius: 14px;
+  --control-pad: 10px 14px;
 
-
-  background-image: url('images/IMG_3830.jpeg'); /* <-- ОСЬ ТУТ ТВОЄ ЗОБРАЖЕННЯ */
-  background-size: cover; /* Розтягує картинку на весь екран без спотворень */
-  background-position: center; /* Центрує картинку */
-  background-attachment: fixed; /* Фон не рухається, коли ти скролиш сторінку */
-
-
-  -webkit-font-smoothing:antialiased;
-  /* і так далі... */
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: var(--text);
 }
 
-  
+/* Basic reset */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background-color: var(--bg);
+
+  /* Збережено твій фон як змінна --custom-bg. 
+     Щоб змінити фон динамічно, додай клас .use-custom-bg на <body> або редагуй --custom-bg */
+  background-image:
+    radial-gradient(800px 400px at 10% 10%, rgba(138,180,255,0.04), transparent),
+    radial-gradient(600px 300px at 90% 80%, rgba(178,156,255,0.03), transparent),
+    var(--custom-bg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
   padding:28px;
@@ -40,50 +52,299 @@ body{
   align-items:center;
   justify-content:center;
   min-height:100vh;
+  -webkit-user-select: none;
 }
 
-.wrap{width:100%;max-width:1024px;display:flex;flex-direction:column;gap:24px;}
-.glass{background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.45));backdrop-filter: blur(12px) saturate(120%);border-radius:var(--radius);border: 1px solid rgba(255,255,255,0.55);box-shadow: var(--soft-shadow);}
+/* Utility: force a plain color/gradient background when preferred */
+body.use-bg-color{
+  background-image:
+    radial-gradient(800px 400px at 10% 10%, rgba(138,180,255,0.04), transparent),
+    radial-gradient(600px 300px at 90% 80%, rgba(178,156,255,0.03), transparent);
+  background-color: var(--bg);
+  background-attachment: scroll;
+}
 
-/* ЗМІНЕНО: Хедер */
-.header{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;}
-.brand{display:flex;gap:12px;align-items:center}
-.title{margin:0;font-size:24px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;} /* Зробив, як ти просив */
-.subtitle{margin:0;font-size:14px;color:rgba(11,27,43,0.6)}
+/* Utility: use a custom CSS background string (color/gradient/image) via a CSS variable */
+body.use-custom{
+  background-image: var(--custom-bg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
 
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;}
+/* Layout wrapper */
+.wrap{
+  width:100%;
+  max-width:1024px;
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+  padding:20px;
+}
 
-/* ЗМІНЕНО: Стиль карток - тепер вони об'ємні */
-.card{padding:24px;border-radius:var(--radius);position:relative;overflow:hidden;transition:transform .22s ease, box-shadow .22s ease;cursor:pointer; background: linear-gradient(135deg, rgba(255,255,255,0.7), rgba(250,250,255,0.55)); border: 1px solid rgba(255,255,255,0.7); box-shadow: var(--soft-shadow); /* ОСЬ ТУТ ГОЛОВНА ЗМІНА - прибрали inset, додали soft-shadow */}
-.card:hover{ transform:translateY(-8px); box-shadow: 30px 30px 60px rgba(120,140,160,0.18); }
-.card a{text-decoration: none; color: inherit;} /* Щоб вся картка була клікабельною */
-.card a:after {content: ""; position: absolute; left: 0; top: 0; right: 0; bottom: 0;} /* Розтягуємо посилання на всю картку */
+/* Core glass surface */
+.glass{
+  background: linear-gradient(180deg, var(--frost-50), var(--frost-30));
+  border-radius: var(--radius);
+  border: 1px solid rgba(255,255,255,0.55);
+  box-shadow: var(--soft-shadow-1), var(--soft-shadow-2);
+  backdrop-filter: blur(16px) saturate(130%) contrast(1.03);
+  -webkit-backdrop-filter: blur(16px) saturate(130%) contrast(1.03);
+  position:relative;
+  overflow:hidden;
+  transition: transform .22s cubic-bezier(.2,.9,.3,1), box-shadow .22s ease;
+}
 
+/* Realistic subtle outline (liquid edge) */
+.glass::before{
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: -1px;
+  border-radius: calc(var(--radius) + 2px);
+  background: linear-gradient(180deg, rgba(255,255,255,0.0), rgba(255,255,255,0.02));
+  box-shadow: 0 0 40px 6px rgba(100,140,255,0.03), 0 0 1px 1px var(--outline);
+  mix-blend-mode: screen;
+  z-index:0;
+}
 
-/* ЗМІНЕНО: Хедер картки з лого */
-.card-head{display:flex;align-items:center;gap:12px;margin-bottom: 8px;}
-.card-head .logo{width: 32px; height: 32px;}
-.card-head h3{margin:0;font-size:20px; font-weight: 700;}
+/* Accent rim for more volume */
+.glass::after{
+  content: "";
+  position:absolute;
+  inset:0;
+  border-radius:var(--radius);
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  pointer-events:none;
+  z-index:1;
+}
 
-.muted{color:rgba(11,27,43,0.65);font-size:15px;line-height: 1.5;}
-.card-body{margin:12px 0}
-.card-foot{display:flex;align-items:center;justify-content:space-between;gap:12px; margin-top: auto; /* Притискає футер до низу */}
+/* Header */
+.header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:18px 22px;
+  gap:16px;
+  position:relative;
+  z-index:2;
+}
+.brand{display:flex;gap:14px;align-items:center}
+.logo{
+  width:44px;
+  height:44px;
+  border-radius:12px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.65), rgba(250,250,255,0.55));
+  border: 1px solid rgba(255,255,255,0.7);
+  box-shadow: 6px 8px 18px rgba(80,110,160,0.06), inset 0 1px 0 rgba(255,255,255,0.8);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.title{
+  margin:0;
+  font-size:20px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  color:var(--text);
+}
+.subtitle{
+  margin:0;
+  font-size:13px;
+  color:var(--muted);
+}
+
+/* Cards grid */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+  z-index:2;
+}
+
+/* Card style - frosted, slightly elevated */
+.card{
+  padding:22px;
+  border-radius:16px;
+  position:relative;
+  overflow:hidden;
+  transition: transform .22s cubic-bezier(.2,.9,.3,1), box-shadow .22s ease;
+  cursor:pointer;
+  background: linear-gradient(135deg, rgba(255,255,255,0.72), rgba(250,252,255,0.55));
+  border: 1px solid rgba(255,255,255,0.72);
+  box-shadow: 0 10px 30px rgba(50,70,90,0.06), inset 0 1px 0 rgba(255,255,255,0.6);
+  backdrop-filter: blur(12px) saturate(120%);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+  z-index:2;
+}
+.card:hover{
+  transform: translateY(-10px) rotateX(1deg);
+  box-shadow: 0 30px 60px rgba(50,70,90,0.12), 0 6px 24px rgba(100,140,255,0.06);
+}
+
+/* Card floating outline for liquid effect */
+.card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  padding:1px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.35), rgba(200,220,255,0.06));
+  -webkit-mask: linear-gradient(#000, #000);
+  pointer-events:none;
+  mix-blend-mode: screen;
+}
+
+/* Card header */
+.card-head{display:flex;align-items:center;gap:12px;margin-bottom:10px;z-index:2}
+.card-head .logo{width:40px;height:40px;border-radius:10px}
+.card-head h3{margin:0;font-size:18px;font-weight:700;color:var(--text)}
+
+/* Content */
+.muted{color:var(--muted);font-size:15px;line-height:1.5}
+.card-body{margin:12px 0;color:var(--text);z-index:2}
+.card-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;z-index:2}
 .price{font-weight:700;font-size:18px}
-.currency{font-size:12px;color:rgba(11,27,43,0.6);margin-left:6px}
+.currency{font-size:13px;color:var(--muted);margin-left:6px}
 
-/* НОВЕ: Стиль для сторінок з деталями */
-.details-page .card {cursor: default;}
-.details-page .card:hover {transform: none; box-shadow: var(--soft-shadow);}
-.details-page .description {font-size: 16px; line-height: 1.6; margin: 24px 0;}
+/* Details page adjustments */
+.details-page .card{cursor:default}
+.details-page .card:hover{transform:none;box-shadow:0 10px 30px rgba(50,70,90,0.06)}
+.details-page .description{font-size:16px;line-height:1.65;margin:22px 0;color:var(--text)}
 
-/* Кнопки */
-.btn{display:inline-flex;align-items:center;gap:8px;border-radius:12px;padding:12px 18px;border:0;background:transparent;font-weight:600;font-size:14px;cursor:pointer;backdrop-filter: blur(6px); text-decoration: none; transition: all .2s ease; z-index: 10; position: relative;}
-.btn.primary{background: var(--accent);color:white;box-shadow: 0 8px 24px rgba(120,100,255,0.12);border:1px solid rgba(255,255,255,0.18);}
-.btn.primary:hover {transform: scale(1.05); box-shadow: 0 12px 30px rgba(120,100,255,0.2);}
+/* Buttons - Liquid Glass controls */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  border-radius:var(--control-radius);
+  padding:var(--control-pad);
+  border:1px solid rgba(255,255,255,0.5);
+  background: linear-gradient(180deg, rgba(255,255,255,0.5), rgba(255,255,255,0.14));
+  backdrop-filter: blur(8px) saturate(120%);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+  font-weight:600;
+  font-size:14px;
+  color:var(--text);
+  cursor:pointer;
+  transition: transform .16s ease, box-shadow .16s ease;
+  box-shadow: 0 6px 18px rgba(30,40,60,0.06), inset 0 1px 0 rgba(255,255,255,0.75);
+  position:relative;
+  z-index:2;
+}
+.btn:active{transform:translateY(1px) scale(.997)}
+.btn.primary{
+  background: var(--accent-grad);
+  color: #fff;
+  box-shadow: 0 10px 30px rgba(120,100,255,0.14), 0 2px 8px rgba(0,0,0,0.06);
+  border: 1px solid rgba(255,255,255,0.18);
+}
+.btn.ghost{
+  background: linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.06));
+  color:var(--text);
+  border:1px solid rgba(255,255,255,0.36);
+}
 
-/* НОВЕ: Кнопка "Назад" */
-.back-btn { padding: 10px 16px; background: linear-gradient(180deg, rgba(255,255,255,0.45), rgba(255,255,255,0.15)); border:1px solid rgba(255,255,255,0.45); box-shadow: 6px 6px 14px rgba(120,140,160,0.04), inset -6px -6px 12px rgba(255,255,255,0.6); }
-.back-btn svg {width: 16px; height: 16px; stroke-width: 2.5px;}
+/* Back button - subtle inset for iOS feel */
+.back-btn{
+  padding:10px 14px;
+  border-radius:12px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.45), rgba(255,255,255,0.12));
+  border:1px solid rgba(255,255,255,0.45);
+  box-shadow: 6px 6px 14px rgba(120,140,160,0.04), inset -6px -6px 12px rgba(255,255,255,0.6);
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:var(--text);
+}
+.back-btn svg{width:16px;height:16px;stroke-width:2.4;stroke:currentColor}
 
-.footer{padding:12px 16px;text-align:center}
-a{color: #2549f2; text-decoration:none}
+/* Inputs & switches - Liquid controls */
+.input, input[type="text"], textarea, select{
+  width:100%;
+  padding:12px 14px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.5);
+  background: linear-gradient(180deg, rgba(255,255,255,0.55), rgba(245,250,255,0.18));
+  color:var(--text);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), 0 6px 18px rgba(30,40,60,0.04);
+  backdrop-filter: blur(6px);
+  transition: box-shadow .12s ease, transform .12s ease, border-color .12s ease;
+  outline: none;
+  font-size:14px;
+}
+.input:focus, input[type="text"]:focus, textarea:focus, select:focus{
+  border-color: rgba(138,180,255,0.9);
+  box-shadow: 0 8px 30px rgba(100,140,255,0.14), inset 0 1px 0 rgba(255,255,255,0.85);
+  transform: translateY(-2px);
+}
+
+/* Toggle switch */
+.switch{
+  --w:46px;
+  --h:26px;
+  width:var(--w);
+  height:var(--h);
+  padding:3px;
+  border-radius:999px;
+  display:inline-flex;
+  align-items:center;
+  background: linear-gradient(180deg, rgba(255,255,255,0.52), rgba(240,246,255,0.12));
+  border:1px solid rgba(255,255,255,0.55);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), 0 6px 16px rgba(30,40,60,0.04);
+}
+.switch .knob{
+  width:20px;
+  height:20px;
+  border-radius:50%;
+  background: linear-gradient(180deg, #fff, rgba(245,245,255,0.92));
+  box-shadow: 0 6px 14px rgba(90,110,150,0.08), inset 0 1px 0 rgba(255,255,255,0.9);
+  transform: translateX(0);
+  transition: transform .18s cubic-bezier(.2,.9,.3,1);
+}
+.switch.on{
+  background: linear-gradient(90deg, rgba(138,180,255,0.25), rgba(178,156,255,0.18));
+  box-shadow: 0 10px 26px rgba(100,140,255,0.08), inset 0 1px 0 rgba(255,255,255,0.85);
+}
+.switch.on .knob{ transform: translateX(20px); }
+
+/* Range (slider) */
+.slider{
+  -webkit-appearance:none;
+  width:100%;
+  height:10px;
+  border-radius:999px;
+  background: linear-gradient(90deg, rgba(138,180,255,0.22), rgba(178,156,255,0.12));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+  outline:none;
+}
+.slider::-webkit-slider-thumb{
+  -webkit-appearance:none;
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  background:linear-gradient(180deg,#fff,rgba(245,245,255,0.96));
+  box-shadow: 0 8px 18px rgba(80,100,140,0.12), 0 1px 0 rgba(255,255,255,0.9) inset;
+  border:1px solid rgba(255,255,255,0.7);
+  cursor:pointer;
+}
+
+/* Footer */
+.footer{padding:12px 16px;text-align:center;color:var(--muted);font-size:13px;z-index:2}
+
+/* Links */
+a{color:#2549f2;text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* Responsiveness tweaks */
+@media (max-width:640px){
+  .header{padding:14px}
+  .card{padding:16px}
+  .title{font-size:18px}
+  .logo{width:36px;height:36px}
+}
+
+/* Small polish */
+small{color:var(--muted);font-size:13px}
+kbd{background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(250,250,255,0.4));padding:6px 8px;border-radius:6px;border:1px solid rgba(255,255,255,0.6);box-shadow:inset 0 1px 0 rgba(255,255,255,0.8)}
