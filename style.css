@@ -22,7 +22,7 @@ body{
               var(--bg); */
 
 
-  background-image: url('images/tvoya-super-kartynka.jpg'); /* <-- ОСЬ ТУТ ТВОЄ ЗОБРАЖЕННЯ */
+  background-image: url('images/IMG_3830.jpeg'); /* <-- ОСЬ ТУТ ТВОЄ ЗОБРАЖЕННЯ */
   background-size: cover; /* Розтягує картинку на весь екран без спотворень */
   background-position: center; /* Центрує картинку */
   background-attachment: fixed; /* Фон не рухається, коли ти скролиш сторінку */
