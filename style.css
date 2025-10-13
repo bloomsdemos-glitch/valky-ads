@@ -2,20 +2,34 @@
   --bg: #e9eef7;
   --glass: rgba(255,255,255,0.6);
   --accent: linear-gradient(135deg,#8ab4ff 0%,#b29cff 100%);
-  --soft-shadow: 18px 18px 36px rgba(140,153,178,0.12), -10px -10px 24px rgba(255,255,255,0.9);
-  --neo-shadow-inset: inset 6px 6px 12px rgba(0,0,0,0.08), inset -6px -6px 12px rgba(255,255,255,0.9);
-  --radius: 16px;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  --soft-shadow: 18px 18px 36px rgba(140,153,178,0.2), -10px -10px 24px rgba(255,255,255,0.9); /* Зробив тінь трохи помітнішою */
+  --radius: 20px; /* Збільшив радіус для більш "рідкого" вигляду */
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   color: #0b1b2b;
 }
 
+/* НОВЕ: Підключаємо шрифт Inter, як ти і хотів */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
 *{box-sizing:border-box}
 html,body{height:100%}
+
 body{
   margin:0;
+  /* --- ЯК ЗМІНИТИ ФОН --- */
+  /* Зараз фон - це градієнти і колір. Щоб поставити картинку, закоментуй рядок "background:" нижче (постав /* на початку і */ в кінці) 
+     і розкоментуй блок "background-image" (прибери /* і */). Встав своє посилання замість placeholder. */
   background: radial-gradient(1200px 600px at 10% 10%, rgba(178,200,255,0.08), transparent),
               radial-gradient(800px 400px at 90% 90%, rgba(160,220,220,0.04), transparent),
               var(--bg);
+  
+  /* --- БЛОК ДЛЯ ФОНУ-КАРТИНКИ --- */
+  /* background-image: url('https://images.unsplash.com/photo-1617957743097-0d20aa2ea762');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Щоб фон не рухався при скролі */
+  */
+  
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
   padding:28px;
@@ -25,96 +39,48 @@ body{
   min-height:100vh;
 }
 
-.wrap{
-  width:100%;
-  max-width:920px;
-  display:flex;
-  flex-direction:column;
-  gap:18px;
-}
+.wrap{width:100%;max-width:1024px;display:flex;flex-direction:column;gap:24px;}
+.glass{background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.45));backdrop-filter: blur(12px) saturate(120%);border-radius:var(--radius);border: 1px solid rgba(255,255,255,0.55);box-shadow: var(--soft-shadow);}
 
-.glass{
-  background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.45));
-  backdrop-filter: blur(10px) saturate(120%) contrast(95%);
-  border-radius:var(--radius);
-  border: 1px solid rgba(255,255,255,0.55);
-  box-shadow: var(--soft-shadow);
-}
-
-.header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:14px 16px;
-}
+/* ЗМІНЕНО: Хедер */
+.header{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;}
 .brand{display:flex;gap:12px;align-items:center}
-.title{margin:0;font-size:16px}
-.subtitle{margin:0;font-size:12px;color:rgba(11,27,43,0.6)}
+.title{margin:0;font-size:24px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;} /* Зробив, як ти просив */
+.subtitle{margin:0;font-size:14px;color:rgba(11,27,43,0.6)}
 
-.cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:16px;
-}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;}
 
-.card{
-  padding:14px;
-  border-radius:16px;
-  position:relative;
-  overflow:hidden;
-  transition:transform .22s ease, box-shadow .22s ease;
-  cursor:default;
-}
-.card:hover{ transform:translateY(-6px); box-shadow: 30px 30px 60px rgba(120,140,160,0.08); }
+/* ЗМІНЕНО: Стиль карток - тепер вони об'ємні */
+.card{padding:24px;border-radius:var(--radius);position:relative;overflow:hidden;transition:transform .22s ease, box-shadow .22s ease;cursor:pointer; background: linear-gradient(135deg, rgba(255,255,255,0.7), rgba(250,250,255,0.55)); border: 1px solid rgba(255,255,255,0.7); box-shadow: var(--soft-shadow); /* ОСЬ ТУТ ГОЛОВНА ЗМІНА - прибрали inset, додали soft-shadow */}
+.card:hover{ transform:translateY(-8px); box-shadow: 30px 30px 60px rgba(120,140,160,0.18); }
+.card a{text-decoration: none; color: inherit;} /* Щоб вся картка була клікабельною */
+.card a:after {content: ""; position: absolute; left: 0; top: 0; right: 0; bottom: 0;} /* Розтягуємо посилання на всю картку */
 
-.neo{
-  background: linear-gradient(180deg, rgba(255,255,255,0.7), rgba(250,250,255,0.55));
-  border: 1px solid rgba(255,255,255,0.7);
-  box-shadow: var(--neo-shadow-inset), 8px 8px 20px rgba(140,153,178,0.06);
-}
 
-.card::after{
-  content:"";
-  position:absolute;
-  left:-30%;
-  top:-30%;
-  width:160%;
-  height:70%;
-  transform:rotate(-18deg) translateY(-10px);
-  background: linear-gradient(90deg, rgba(255,255,255,0.25), rgba(255,255,255,0.02));
-  filter:blur(18px);
-  pointer-events:none;
-}
+/* ЗМІНЕНО: Хедер картки з лого */
+.card-head{display:flex;align-items:center;gap:12px;margin-bottom: 8px;}
+.card-head .logo{width: 32px; height: 32px;}
+.card-head h3{margin:0;font-size:20px; font-weight: 700;}
 
-.card-head h3{margin:0;font-size:18px}
-.muted{color:rgba(11,27,43,0.55);font-size:13px;margin-top:6px}
+.muted{color:rgba(11,27,43,0.65);font-size:15px;line-height: 1.5;}
 .card-body{margin:12px 0}
-.card-body ul{margin:0;padding-left:16px;color:rgba(11,27,43,0.75);font-size:14px}
-
-.card-foot{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.card-foot{display:flex;align-items:center;justify-content:space-between;gap:12px; margin-top: auto; /* Притискає футер до низу */}
 .price{font-weight:700;font-size:18px}
 .currency{font-size:12px;color:rgba(11,27,43,0.6);margin-left:6px}
 
-.btn{
-  display:inline-flex;align-items:center;gap:8px;border-radius:12px;padding:8px 12px;border:0;background:transparent;font-weight:600;font-size:14px;
-  cursor:pointer;backdrop-filter: blur(6px);
-}
-.btn.soft{
-  background: linear-gradient(180deg, rgba(255,255,255,0.45), rgba(255,255,255,0.15));
-  border:1px solid rgba(255,255,255,0.45);
-  box-shadow: 6px 6px 14px rgba(120,140,160,0.04), inset -6px -6px 12px rgba(255,255,255,0.6);
-}
-.btn.primary{
-  background: var(--accent);
-  color:white;
-  box-shadow: 0 8px 24px rgba(120,100,255,0.12);
-  border:1px solid rgba(255,255,255,0.18);
-}
+/* НОВЕ: Стиль для сторінок з деталями */
+.details-page .card {cursor: default;}
+.details-page .card:hover {transform: none; box-shadow: var(--soft-shadow);}
+.details-page .description {font-size: 16px; line-height: 1.6; margin: 24px 0;}
+
+/* Кнопки */
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:12px;padding:12px 18px;border:0;background:transparent;font-weight:600;font-size:14px;cursor:pointer;backdrop-filter: blur(6px); text-decoration: none; transition: all .2s ease; z-index: 10; position: relative;}
+.btn.primary{background: var(--accent);color:white;box-shadow: 0 8px 24px rgba(120,100,255,0.12);border:1px solid rgba(255,255,255,0.18);}
+.btn.primary:hover {transform: scale(1.05); box-shadow: 0 12px 30px rgba(120,100,255,0.2);}
+
+/* НОВЕ: Кнопка "Назад" */
+.back-btn { padding: 10px 16px; background: linear-gradient(180deg, rgba(255,255,255,0.45), rgba(255,255,255,0.15)); border:1px solid rgba(255,255,255,0.45); box-shadow: 6px 6px 14px rgba(120,140,160,0.04), inset -6px -6px 12px rgba(255,255,255,0.6); }
+.back-btn svg {width: 16px; height: 16px; stroke-width: 2.5px;}
 
 .footer{padding:12px 16px;text-align:center}
 a{color: #2549f2; text-decoration:none}
-
-@media (max-width:480px){
-  body{padding:16px}
-  .header{flex-direction:column;align-items:flex-start;gap:8px}
-}
