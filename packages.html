@@ -6,43 +6,46 @@
     <title>Реклама • Готові пакети</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="details-page">
     <div class="wrap">
-        <div class="header glass">
+        <header class="header glass reveal">
+            <a href="index.html" class="back-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
+                <span>Назад</span>
+            </a>
             <div class="brand">
-                <div>
-                    <h1 class="title">Готові рекламні пакети</h1>
-                    <p class="subtitle">Найкращі пропозиції для комплексного просування</p>
-                </div>
+                <h1 class="title">Готові пакети</h1>
             </div>
-            <a href="index.html" class="btn soft">На головну</a>
-        </div>
-        <div class="cards">
-            <div class="card neo">
+        </header>
+
+        <main class="cards">
+            <div class="card reveal">
                 <div class="card-head"><h3>Пакет «Стандарт+»</h3></div>
-                <div class="card-body"><p class="muted">1 пост в каналі + 1 бізнес-закріп в чаті. Швидкий старт для анонсу.</p></div>
+                <p class="muted">1 пост в каналі + 1 бізнес-закріп в чаті. Швидкий старт для анонсу.</p>
                 <div class="card-foot">
                     <div class="price">350<span class="currency">грн</span></div>
                     <button class="btn primary order-btn" data-service="Пакет «Стандарт+»">Замовити</button>
                 </div>
             </div>
-            <div class="card neo">
+
+            <div class="card reveal">
                 <div class="card-head"><h3>Пакет «PRO»</h3></div>
-                <div class="card-body"><p class="muted">1 пост+закріп в каналі + оренда гілки в Базарчику на тиждень. Потужний удар по цільовій аудиторії.</p></div>
+                <p class="muted">1 пост+закріп в каналі + оренда гілки в Базарчику на тиждень. Потужний удар по цільовій аудиторії.</p>
                 <div class="card-foot">
                     <div class="price">750<span class="currency">грн</span></div>
                     <button class="btn primary order-btn" data-service="Пакет «PRO»">Замовити</button>
                 </div>
             </div>
-             <div class="card neo">
+    
+            <div class="card reveal">
                 <div class="card-head"><h3>Кастомний пакет</h3></div>
-                <div class="card-body"><p class="muted">Ми підберемо індивідуальну рекламну кампанію під ваш бюджет та цілі. Інтеграції, розіграші, нативна реклама.</p></div>
+                <p class="muted">Підберемо індивідуальну рекламну кампанію під ваш бюджет та цілі. Інтеграції, розіграші, нативна реклама.</p>
                 <div class="card-foot">
                     <div class="price">???<span class="currency"></span></div>
-                    <button class="btn soft order-btn" data-service="Індивідуальна консультація по рекламі">Обговорити</button>
+                    <button class="btn primary order-btn" data-service="Індивідуальна консультація по рекламі">Обговорити</button>
                 </div>
             </div>
-        </div>
+        </main>
     </div>
     <script src="script.js"></script>
 </body>
