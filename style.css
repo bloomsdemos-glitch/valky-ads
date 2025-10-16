@@ -1,29 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 
 :root{
-  /* Palette - ЗМІНЕНО: тепер все на базі чистого білого скла */
+  /* ✅ Підвищена прозорість для iOS 26 Liquid Glass */
   --bg: #e9eef7;
   --custom-bg: url('images/mobile-bg.jpg');
-  --frost-60: rgba(255,255,255,0.60); /* Було --frost-50 */
-  --frost-40: rgba(255,255,255,0.40); /* Було --frost-30 */
+  --frost-70: rgba(255,255,255,0.70);
+  --frost-50: rgba(255,255,255,0.50);
+  --frost-30: rgba(255,255,255,0.30);
   --accent-grad: linear-gradient(135deg,#8ab4ff 0%,#b29cff 100%);
   --text: #0b1b2b;
   --muted: rgba(11,27,43,0.65);
 
-  /* Depth & shape - ЗМІНЕНО: більше закруглення */
-  --radius: 28px; /* Було 20px, тепер все буде значно плавнішим */
-  --soft-shadow-1: 0 24px 50px rgba(40,60,90,0.1);
-  --soft-shadow-2: 0 0 0 1px rgba(255,255,255,0.8) inset; /* Тонка біла рамка для об'єму */
+  /* ✅ Liquid Glass ефекти */
+  --liquid-glow: 0 0 20px rgba(138,180,255,0.3), 0 0 40px rgba(178,156,255,0.2);
+  --liquid-border: rgba(255,255,255,0.9);
 
-  /* Controls */
-  --control-radius: 16px; /* Було 14px */
-  --control-pad: 12px 16px; /* Було 10px 14px */
+  --radius: 28px;
+  --soft-shadow-1: 0 24px 50px rgba(40,60,90,0.08);
+  --soft-shadow-2: 0 0 0 1px rgba(255,255,255,0.6) inset;
+
+  --control-radius: 16px;
+  --control-pad: 12px 16px;
 
   font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   color: var(--text);
 }
 
-/* Basic reset */
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
@@ -33,100 +35,169 @@ body{
     radial-gradient(800px 400px at 10% 10%, rgba(138,180,255,0.04), transparent),
     radial-gradient(600px 300px at 90% 80%, rgba(178,156,255,0.03), transparent),
     var(--custom-bg);
+  /* ✅ Фікс розміру бекграунду */
   background-size: cover;
-  background-position: center;
+  background-position: center center;
+  background-repeat: no-repeat;
   background-attachment: fixed;
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
   padding:28px;
   display:flex;
-  align-items: flex-start; /* Це наш фікс "обрізаної" картки */
+  align-items: flex-start;
   justify-content:center;
   min-height:100vh;
   -webkit-user-select: none;
 }
 
-/* Layout wrapper */
 .wrap{
   width:100%;
   max-width:1024px;
   display:flex;
   flex-direction:column;
   gap:24px;
-  padding:20px 0; /* Прибрав бічні падінги, щоб виглядало краще на мобілках */
+  padding:20px 0;
 }
 
-/* Core glass surface - ЗМІНЕНО: чистіше скло і сильніший блюр */
+/* ✅ Більше прозорості для iOS 26 */
 .glass{
-  background: linear-gradient(180deg, var(--frost-60), var(--frost-40));
+  background: linear-gradient(180deg, var(--frost-70), var(--frost-50));
   border-radius: var(--radius);
   box-shadow: var(--soft-shadow-1), var(--soft-shadow-2);
-  backdrop-filter: blur(20px) saturate(120%); /* Було blur(16px) */
-  -webkit-backdrop-filter: blur(20px) saturate(120%);
+  backdrop-filter: blur(24px) saturate(130%);
+  -webkit-backdrop-filter: blur(24px) saturate(130%);
 }
 
-/* Header */
+/* ✅ Центрований хедер */
 .header{
   display:flex;
   align-items:center;
-  justify-content:space-between;
+  justify-content:center;
   padding:18px 22px;
   gap:16px;
 }
-.brand{display:flex;gap:14px;align-items:center}
+
+.main-header {
+  justify-content: center;
+}
+
+.header.reveal {
+  justify-content: space-between;
+}
+
+.brand{display:flex;gap:14px;align-items:center;justify-content:center;}
 .title{margin:0;font-size:20px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text);}
 .subtitle{margin:0;font-size:13px;color:var(--muted);}
 
-/* Cards grid */
 .cards{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
   gap:24px;
 }
 
-/* Card style - ЗМІНЕНО: більше закруглення і чистий колір */
+/* ✅ Картки з більшою прозорістю */
 .card{
+  position: relative;
   padding:24px;
-  border-radius: var(--radius); /* Використовуємо нашу нову змінну */
+  border-radius: var(--radius);
   transition: transform .22s cubic-bezier(.2,.9,.3,1), box-shadow .22s ease;
   cursor:pointer;
-  background: linear-gradient(135deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4));
+  background: linear-gradient(135deg, var(--frost-70), var(--frost-50));
   box-shadow: var(--soft-shadow-1), var(--soft-shadow-2);
-  backdrop-filter: blur(20px) saturate(120%);
-  -webkit-backdrop-filter: blur(20px) saturate(120%);
-}
-.card:hover{
-  transform: translateY(-10px);
-  box-shadow: 0 30px 60px rgba(40,60,90,0.15), var(--soft-shadow-2);
+  backdrop-filter: blur(24px) saturate(130%);
+  -webkit-backdrop-filter: blur(24px) saturate(130%);
 }
 
-/* Card header */
+/* ✅ Фікс кліку - обгортка a має бути block */
+.card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.card:hover{
+  transform: translateY(-10px);
+  box-shadow: 0 30px 60px rgba(40,60,90,0.12), var(--soft-shadow-2);
+}
+
+/* ✅ Liquid Glass Outline для іконок */
+.icon-wrapper {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  flex-shrink: 0;
+}
+
+.liquid-outline {
+  background: linear-gradient(135deg, rgba(255,255,255,0.4), rgba(255,255,255,0.1));
+  border: 2px solid var(--liquid-border);
+  box-shadow: 
+    0 8px 32px rgba(138,180,255,0.15),
+    0 0 0 1px rgba(255,255,255,0.8) inset,
+    var(--liquid-glow);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ✅ Менші іконки для "Готові пакети" і "Статистика" */
+.small-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.3), rgba(255,255,255,0.1));
+  border-radius: 14px;
+}
+
+.small-icon .logo {
+  width: 28px;
+  height: 28px;
+}
+
 .card-head{display:flex;align-items:center;gap:14px;margin-bottom:10px;}
 .card-head .logo{width:40px;height:40px; color: var(--text);}
 .card-head h3{margin:0;font-size:18px;font-weight:700;color:var(--text)}
 
-/* Content */
+/* ✅ Іконка стрілки (chevron) справа */
+.arrow-icon {
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  color: var(--muted);
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.card:hover .arrow-icon {
+  opacity: 1;
+  transform: translateY(-50%) translateX(4px);
+  color: var(--text);
+}
+
 .muted{color:var(--muted);font-size:15px;line-height:1.5}
 .card-body{margin:12px 0;color:var(--text);}
 .card-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;}
 .price{font-weight:700;font-size:18px}
 .currency{font-size:13px;color:var(--muted);margin-left:6px}
 
-/* Details page adjustments */
 .details-page .card{cursor:default}
 .details-page .card:hover{transform:none; box-shadow: var(--soft-shadow-1), var(--soft-shadow-2);}
 
-/* Buttons - ЗМІНЕНО: теж чисте скло */
 .btn{
   display:inline-flex;
   align-items:center;
   gap:10px;
   border-radius:var(--control-radius);
   padding:var(--control-pad);
-  border: none; /* Прибираємо рамку, тінь її замінить */
-  background: linear-gradient(180deg, rgba(255,255,255,0.5), rgba(255,255,255,0.3));
-  backdrop-filter: blur(10px) saturate(120%);
-  -webkit-backdrop-filter: blur(10px) saturate(120%);
+  border: none;
+  background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4));
+  backdrop-filter: blur(12px) saturate(120%);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
   font-weight:600;
   font-size:14px;
   color:var(--text);
@@ -141,21 +212,28 @@ body{
   box-shadow: 0 10px 30px rgba(120,100,255,0.18);
 }
 
-/* Back button */
 .back-btn{
   padding:10px 14px;
   border-radius:14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--text);
+  transition: all 0.2s ease;
 }
+
+.back-btn:hover {
+  transform: translateX(-4px);
+}
+
 .back-btn svg{width:16px;height:16px;stroke-width:2.4;stroke:currentColor}
 
-/* Footer */
 .footer{padding:14px 18px;text-align:center;color:var(--muted);font-size:13px;}
 
-/* Links */
 a{color:#2549f2;text-decoration:none}
 a:hover{text-decoration:underline}
 
-/* Анімація появи елементів */
 .reveal {
   opacity: 0;
   transform: translateY(30px);
@@ -166,9 +244,11 @@ a:hover{text-decoration:underline}
   transform: translateY(0);
 }
 
-/* Responsiveness tweaks */
 @media (max-width:640px){
   .header{padding:14px}
   .card{padding:20px; border-radius: 24px;}
   .title{font-size:18px}
+  .arrow-icon {
+    right: 16px;
+  }
 }
