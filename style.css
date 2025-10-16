@@ -65,7 +65,7 @@ body{
   border-radius: var(--radius);
   box-shadow: var(--soft-shadow-1), var(--soft-shadow-2);
   backdrop-filter: blur(16px) saturate(130%);
-  -webkit-backdrop-filter: blur(24px) saturate(130%);
+  -webkit-backdrop-filter: blur(18px) saturate(130%);
 }
 
 /* ✅ Центрований хедер */
