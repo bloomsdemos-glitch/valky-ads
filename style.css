@@ -3,7 +3,7 @@
 :root{
   /* Palette - ЗМІНЕНО: тепер все на базі чистого білого скла */
   --bg: #e9eef7;
-  --custom-bg: url('images/IMG_3830.jpeg');
+  --custom-bg: url('images/IMG_3905.jpeg');
   --frost-60: rgba(255,255,255,0.60); /* Було --frost-50 */
   --frost-40: rgba(255,255,255,0.40); /* Було --frost-30 */
   --accent-grad: linear-gradient(135deg,#8ab4ff 0%,#b29cff 100%);
