@@ -27,7 +27,6 @@ html, body { height: 100%; margin: 0; }
 body{
   margin:0;
   background-color: var(--bg);
-  /* ===== ФІКС: фон у натуральному розмірі, дублюється вниз ===== */
   background-image:
     radial-gradient(800px 400px at 10% 10%, rgba(138,180,255,0.04), transparent),
     radial-gradient(600px 300px at 90% 80%, rgba(178,156,255,0.03), transparent),
@@ -39,7 +38,7 @@ body{
 
   padding:28px;
   display:flex;
-  align-items:flex-start;
+  align-items:flex-start; /* === ФІКС: центрування хедера */
   justify-content:center;
   min-height:100vh;
   -webkit-user-select: none;
@@ -53,7 +52,7 @@ body{
   display:flex;
   flex-direction:column;
   gap:24px;
-  padding:20px 0;
+  padding:0; /* === ФІКС: центрування хедера */
 }
 
 .glass{
@@ -92,7 +91,7 @@ body{
 
 .card{
   position: relative;
-  padding:22px;
+  padding: 22px 45px 22px 22px; /* === ФІКС: текст не залазить на стрілку */
   border-radius: var(--radius);
   transition: transform .22s cubic-bezier(.2,.9,.3,1), box-shadow .22s ease;
   background: linear-gradient(145deg, var(--frost-70) 0%, var(--frost-30) 100%);
@@ -109,7 +108,6 @@ body{
   gap:8px;
 }
 
-/* Картка, яка є посиланням */
 a.card {
   color: inherit;
   text-decoration: none;
@@ -124,7 +122,6 @@ a.card:hover {
     var(--soft-shadow-2);
 }
 
-/* ===== ФІКС: Уніфікований стиль для всіх іконок ===== */
 .icon-wrapper {
   width: 56px;
   height: 56px;
@@ -135,13 +132,11 @@ a.card:hover {
   justify-content:center;
   border-radius: 14px;
   flex-shrink:0;
-  /* Прибрали фон, який створював "рамку" */
   background: transparent; 
   border: none;
   box-shadow: none;
 }
 
-/* Застосовуємо до всіх img та svg всередині */
 .icon-wrapper img,
 .icon-wrapper svg {
   width: 34px !important;
@@ -155,7 +150,6 @@ a.card:hover {
   stroke: var(--text);
   fill: none;
 }
-/* ========================================================= */
 
 .card-head { display:flex; align-items:center; gap:14px; margin-bottom:6px; }
 .card-head h3 { margin:0; font-size:18px; font-weight:700; color:var(--text); }
@@ -220,23 +214,21 @@ a.card:hover .arrow-icon {
 a { color:#2549f2; text-decoration:none; }
 a:hover { text-decoration:underline; }
 
-/* Styles for Stats page carousel */
 .carousel {
     display: flex;
     gap: 24px;
     overflow-x: auto;
     padding: 10px;
-    /* Hide scrollbar */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none;  /* IE 10+ */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 .carousel::-webkit-scrollbar {
-    display: none; /* Safari and Chrome */
+    display: none;
 }
 .carousel .card {
-    flex: 0 0 80%; /* Card width */
+    flex: 0 0 80%;
     max-width: 320px;
-    height: 400px; /* Example height */
+    height: 400px;
     background: #fff;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     border-radius: var(--radius);
@@ -249,9 +241,31 @@ a:hover { text-decoration:underline; }
 
 @media (max-width:640px){
   .header { padding:6px 10px; border-radius: 22px; font-size:14px; }
-  .card { padding:18px; border-radius: 20px; }
+  .card { padding:18px 38px 18px 18px; border-radius: 20px; } /* Адаптивний відступ */
   .title { font-size:15px; }
   .arrow-icon { right: 12px; }
   .cards { gap:18px; grid-template-columns: 1fr; }
   .carousel .card { flex-basis: 90%; }
+}
+
+/* === НОВЕ: Анімація блиску для тексту === */
+.flash-text {
+  background: linear-gradient(
+    100deg, 
+    var(--muted) 20%, 
+    var(--text) 45%, 
+    var(--text) 55%, 
+    var(--muted) 80%
+  );
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: -250% 0;
+  }
 }
