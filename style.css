@@ -29,7 +29,7 @@ body {
   background-color: var(--bg); /* Це запасний колір, якщо фон не завантажиться */
   
   /* --- Ось тут вся магія --- */
-  background-image: url('images/mbg2orange.jpg.jpg'); /* Переконайся, що шлях правильний */
+  background-image: url('images/mbg2sssky.jpg.jpg'); /* Переконайся, що шлях правильний */
   background-size: cover; /* ЗАМІСТЬ 'auto'. Масштабує фон, щоб він покрив весь екран, обрізаючи мінімум */
   background-position: center center; /* Завжди тримає центр картинки в центрі екрана */
   background-attachment: fixed; /* Фон залишається на місці, коли ти скролиш. Дуже стильний ефект */
