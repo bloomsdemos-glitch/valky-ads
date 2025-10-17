@@ -24,27 +24,28 @@
 * { box-sizing: border-box; }
 html, body { height: 100%; margin: 0; }
 
-body{
-  margin:0;
-  background-color: var(--bg);
-  background-image:
-    radial-gradient(800px 400px at 10% 10%, rgba(138,180,255,0.04), transparent),
-    radial-gradient(600px 300px at 90% 80%, rgba(178,156,255,0.03), transparent),
-    var(--custom-bg);
-  background-repeat: repeat-y;
-  background-size: auto;
-  background-position: top center;
-  background-attachment: scroll;
-
-  padding:28px;
-  display:flex;
-  align-items:flex-start; /* === ФІКС: центрування хедера */
-  justify-content:center;
-  min-height:100vh;
+body {
+  margin: 0;
+  background-color: var(--bg); /* Це запасний колір, якщо фон не завантажиться */
+  
+  /* --- Ось тут вся магія --- */
+  background-image: url('images/mobile-bg.jpg'); /* Переконайся, що шлях правильний */
+  background-size: cover; /* ЗАМІСТЬ 'auto'. Масштабує фон, щоб він покрив весь екран, обрізаючи мінімум */
+  background-position: center center; /* Завжди тримає центр картинки в центрі екрана */
+  background-attachment: fixed; /* Фон залишається на місці, коли ти скролиш. Дуже стильний ефект */
+  background-repeat: no-repeat; /* Повторення нам більше не потрібне */
+  /* --- Кінець магії --- */
+  
+  padding: 28px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 100vh;
   -webkit-user-select: none;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
 
 .wrap{
   width:100%;
