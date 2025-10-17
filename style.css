@@ -279,8 +279,7 @@ a:hover { text-decoration:underline; }
     transform: rotate(25deg); /* Нахиляємо його */
     
     /* Анімація: назва, тривалість, тип, нескінченність */
-    animation: flash-animation 5s ease-in-out infinite;
-    animation-delay: 2s; /* Пауза перед першим запуском */
+    animation: flash-animation 4s ease-in-out infinite;
 }
 
 /* Анімація руху відблиску */
