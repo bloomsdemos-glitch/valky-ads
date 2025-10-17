@@ -34,10 +34,12 @@ body{
     radial-gradient(800px 400px at 10% 10%, rgba(138,180,255,0.04), transparent),
     radial-gradient(600px 300px at 90% 80%, rgba(178,156,255,0.03), transparent),
     var(--custom-bg);
-  /* ✅ фіксоване масштабування фонового зображення */
-  background-size: cover; 
-  background-repeat: no-repeat; 
+  /* ✅ фон у натуральному розмірі, що дублюється вниз */
+  background-repeat: repeat-y;
+  background-size: auto;
+  background-position: top center;
   background-attachment: fixed;
+
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
   padding:28px;
