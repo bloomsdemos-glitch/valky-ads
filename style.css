@@ -256,65 +256,47 @@ a:hover { text-decoration:underline; }
   .carousel .card { flex-basis: 90%; }
 }
 
-/* === ОНОВЛЕНО: Анімація яскравого відблиску === */
+/* === ФІНАЛЬНА ВЕРСІЯ: Плавний відблиск === */
 
-/* --- Частина 1: Відблиск для ІКОНКИ --- */
-.flash-icon {
-  position: relative; /* Створюємо контейнер для магії */
-  overflow: hidden;   /* Ховаємо все, що вилазить за межі іконки */
+/* Створюємо псевдо-елемент для відблиску всередині картки */
+.flash-container::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -75%;
+    width: 50%;
+    height: 200%;
+    
+    /* Сам відблиск - напівпрозорий білий промінь з розмитими краями */
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.3) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    
+    transform: rotate(25deg); /* Нахиляємо його */
+    
+    /* Анімація: назва, тривалість, тип, нескінченність */
+    animation: flash-animation 5s ease-in-out infinite;
+    animation-delay: 2s; /* Пауза перед першим запуском */
 }
 
-.flash-icon::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  transform: translateX(-100%); /* Ховаємо відблиск зліва */
-  width: 50%; /* Ширина самого відблиску */
-  height: 100%;
-  
-  /* А ось і сам відблиск - яскравий промінь */
-  background: linear-gradient(
-    to right, 
-    rgba(255, 255, 255, 0) 0%, 
-    rgba(255, 255, 255, 0.5) 50%, 
-    rgba(255, 255, 255, 0) 100%
-  );
-  
-  /* Підключаємо анімацію */
-  animation: icon-shine 2.5s ease-in-out infinite;
-  animation-delay: 1.5s; /* Запускається не одразу */
+/* Анімація руху відблиску */
+@keyframes flash-animation {
+  0% { left: -75%; } /* Початкова позиція за межами картки */
+  50% { left: 125%; } /* Кінцева позиція за межами картки */
+  100% { left: 125%; } /* Залишається там до кінця, створюючи паузу */
 }
 
-/* Анімація, яка рухає наш відблиск справа наліво */
-@keyframes icon-shine {
-  0% { transform: translateX(-100%) skewX(-15deg); }
-  50% { transform: translateX(200%) skewX(-15deg); }
-  100% { transform: translateX(200%) skewX(-15deg); }
+/* Головний трюк: обрізаємо все по контуру тексту та іконки */
+.flash-effect {
+    /* Змушуємо елементи стати "трафаретом" для відблиску */
+    -webkit-mask-image: linear-gradient(#fff 100%, transparent);
+    mask-image: linear-gradient(#fff 100%, transparent);
+    
+    /* Важливо: елементи повинні бути "над" відблиском */
+    position: relative;
+    z-index: 1;
 }
 
-
-/* --- Частина 2: Відблиск для ТЕКСТУ --- */
-.flash-text {
-  /* Новий градієнт - різкий, з білою смугою */
-  background: linear-gradient(
-    100deg, 
-    var(--text) 30%, 
-    #fff 50%, 
-    var(--text) 70%
-  );
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  
-  /* Швидша анімація з затримкою */
-  animation: text-shine 2.5s ease-in-out infinite;
-  animation-delay: 1.5s;
-}
-
-/* Оновлена анімація для руху фону тексту */
-@keyframes text-shine {
-  0% { background-position: 200% 0; }
-  50% { background-position: -200% 0; }
-  100% { background-position: -200% 0; }
-}
