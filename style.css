@@ -92,6 +92,7 @@ body {
 
 .card{
   position: relative;
+  overflow: hidden;
   padding: 22px 45px 22px 22px; /* === ФІКС: текст не залазить на стрілку */
   border-radius: var(--radius);
   transition: transform .22s cubic-bezier(.2,.9,.3,1), box-shadow .22s ease;
