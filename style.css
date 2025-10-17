@@ -152,6 +152,13 @@ a.card:hover {
   fill: none;
 }
 
+/* === НОВЕ: Зменшуємо SVG-іконки, щоб вони виглядали як PNG === */
+.icon-wrapper svg {
+    width: 28px !important;
+    height: 28px !important;
+}
+
+
 .card-head { display:flex; align-items:center; gap:14px; margin-bottom:6px; }
 .card-head h3 { margin:0; font-size:18px; font-weight:700; color:var(--text); }
 
@@ -249,24 +256,65 @@ a:hover { text-decoration:underline; }
   .carousel .card { flex-basis: 90%; }
 }
 
-/* === НОВЕ: Анімація блиску для тексту === */
+/* === ОНОВЛЕНО: Анімація яскравого відблиску === */
+
+/* --- Частина 1: Відблиск для ІКОНКИ --- */
+.flash-icon {
+  position: relative; /* Створюємо контейнер для магії */
+  overflow: hidden;   /* Ховаємо все, що вилазить за межі іконки */
+}
+
+.flash-icon::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  transform: translateX(-100%); /* Ховаємо відблиск зліва */
+  width: 50%; /* Ширина самого відблиску */
+  height: 100%;
+  
+  /* А ось і сам відблиск - яскравий промінь */
+  background: linear-gradient(
+    to right, 
+    rgba(255, 255, 255, 0) 0%, 
+    rgba(255, 255, 255, 0.5) 50%, 
+    rgba(255, 255, 255, 0) 100%
+  );
+  
+  /* Підключаємо анімацію */
+  animation: icon-shine 2.5s ease-in-out infinite;
+  animation-delay: 1.5s; /* Запускається не одразу */
+}
+
+/* Анімація, яка рухає наш відблиск справа наліво */
+@keyframes icon-shine {
+  0% { transform: translateX(-100%) skewX(-15deg); }
+  50% { transform: translateX(200%) skewX(-15deg); }
+  100% { transform: translateX(200%) skewX(-15deg); }
+}
+
+
+/* --- Частина 2: Відблиск для ТЕКСТУ --- */
 .flash-text {
+  /* Новий градієнт - різкий, з білою смугою */
   background: linear-gradient(
     100deg, 
-    var(--muted) 20%, 
-    var(--text) 45%, 
-    var(--text) 55%, 
-    var(--muted) 80%
+    var(--text) 30%, 
+    #fff 50%, 
+    var(--text) 70%
   );
-  background-size: 250% 100%;
+  background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: shine 4s linear infinite;
+  
+  /* Швидша анімація з затримкою */
+  animation: text-shine 2.5s ease-in-out infinite;
+  animation-delay: 1.5s;
 }
 
-@keyframes shine {
-  to {
-    background-position: -250% 0;
-  }
+/* Оновлена анімація для руху фону тексту */
+@keyframes text-shine {
+  0% { background-position: 200% 0; }
+  50% { background-position: -200% 0; }
+  100% { background-position: -200% 0; }
 }
