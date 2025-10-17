@@ -1,23 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 
 :root{
-  /* 🔹 Оновлена палітра для Liquid Glass */
   --bg: #e9eef7;
-  --custom-bg: url('images/mobile-bg.jpg'); /* переконайся, що шлях вірний */
+  --custom-bg: url('images/mobile-bg.jpg'); /* шлях до твого фону */
   --frost-70: rgba(255,255,255,0.35);
   --frost-50: rgba(255,255,255,0.20);
   --frost-30: rgba(255,255,255,0.10);
   --accent-grad: linear-gradient(135deg,#8ab4ff 0%,#b29cff 100%);
   --text: #0b1b2b;
   --muted: rgba(11,27,43,0.65);
-
-  --liquid-glow: 0 0 20px rgba(138,180,255,0.18), 0 0 40px rgba(178,156,255,0.10);
-  --liquid-border: rgba(255,255,255,0.5);
-
   --radius: 28px;
   --soft-shadow-1: 0 24px 50px rgba(40,60,90,0.08);
   --soft-shadow-2: inset 0 0 0 1px rgba(255,255,255,0.12);
-
   --control-radius: 16px;
   --control-pad: 10px 18px;
 
@@ -33,17 +27,15 @@ html, body { height: 100%; margin: 0; }
 body{
   margin:0;
   background-color: var(--bg);
-
-  /* ===== фон у натуральному розмірі, дублюється вниз (tile-like) ===== */
+  /* ===== ФІКС: фон у натуральному розмірі, дублюється вниз ===== */
   background-image:
     radial-gradient(800px 400px at 10% 10%, rgba(138,180,255,0.04), transparent),
     radial-gradient(600px 300px at 90% 80%, rgba(178,156,255,0.03), transparent),
     var(--custom-bg);
-
-  background-repeat: repeat-y;     /* повтор по вертикалі */
-  background-size: auto;           /* рідний розмір зображення — не масштабувати */
+  background-repeat: repeat-y;
+  background-size: auto;
   background-position: top center;
-  background-attachment: scroll;   /* робочіший на мобайлі, ніж fixed у деяких UA */
+  background-attachment: scroll;
 
   padding:28px;
   display:flex;
@@ -51,12 +43,9 @@ body{
   justify-content:center;
   min-height:100vh;
   -webkit-user-select: none;
-  -ms-overflow-style: none;  /* hide scrollbar on IE */
-  scrollbar-width: none;     /* hide scrollbar on Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
-
-/* optional: приховаємо скролбар-стрічку, якщо треба */
-/* body::-webkit-scrollbar{ display:none; } */
 
 .wrap{
   width:100%;
@@ -67,7 +56,6 @@ body{
   padding:20px 0;
 }
 
-/* ===== Загальний Liquid Glass стиль ===== */
 .glass{
   background: linear-gradient(180deg, var(--frost-70), var(--frost-50));
   border-radius: var(--radius);
@@ -76,29 +64,25 @@ body{
   -webkit-backdrop-filter: blur(16px) saturate(130%);
 }
 
-/* ===== Хедер — маленька капсула, під розмір тексту ===== */
 .header{
-  display: inline-flex;       /* щоб ширина була по контенту */
+  display: inline-flex;
   align-items:center;
   justify-content:center;
-  padding:6px 12px;           /* тонший padding — реально капсула */
-  border-radius: 999px;       /* дуже кругла капсула */
+  padding:6px 12px;
+  border-radius: 999px;
   background: linear-gradient(145deg, var(--frost-50), var(--frost-30));
   backdrop-filter: blur(18px) saturate(140%);
   -webkit-backdrop-filter: blur(18px) saturate(140%);
   margin: 0 auto;
   box-shadow: 0 6px 18px rgba(40,60,90,0.06), var(--soft-shadow-2);
-  align-self: center;         /* центр у .wrap (flex column) */
-  white-space: nowrap;        /* не переносити назву */
+  align-self: center;
+  white-space: nowrap;
 }
-
-/* якщо у тебе є .main-header який має інші правила — цей пріоритет забезпечує inline-flex */
 
 .brand{ display:flex; gap:10px; align-items:center; justify-content:center; }
 .title{ margin:0; font-size:16px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--text); }
 .subtitle{ margin:0; font-size:13px; color:var(--muted); }
 
-/* ===== Сітка карток ===== */
 .cards{
   display:grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -106,33 +90,32 @@ body{
   width:100%;
 }
 
-/* ===== Картки iOS 26 Liquid Glass (з мʼякою тінню) ===== */
 .card{
   position: relative;
   padding:22px;
   border-radius: var(--radius);
   transition: transform .22s cubic-bezier(.2,.9,.3,1), box-shadow .22s ease;
-  cursor:pointer;
-
   background: linear-gradient(145deg, var(--frost-70) 0%, var(--frost-30) 100%);
   border: 1px solid rgba(255,255,255,0.18);
-
-  /* внутрішній шелковистий нюанс + зовнішня мʼяка тінь */
   box-shadow:
     inset 0 1px 1px rgba(255,255,255,0.22),
     0 8px 40px rgba(40,60,90,0.10),
     0 6px 20px rgba(0,0,0,0.06),
     var(--soft-shadow-2);
-
   backdrop-filter: blur(24px) saturate(150%);
   -webkit-backdrop-filter: blur(24px) saturate(150%);
-
   display:flex;
   flex-direction:column;
   gap:8px;
 }
 
-.card:hover{
+/* Картка, яка є посиланням */
+a.card {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+a.card:hover {
   transform: translateY(-8px);
   box-shadow:
     inset 0 1px 1px rgba(255,255,255,0.24),
@@ -141,14 +124,7 @@ body{
     var(--soft-shadow-2);
 }
 
-/* весь блок лінку покриває картку */
-.card-link {
-  display:block;
-  color: inherit;
-  text-decoration: none;
-}
-
-/* ===== Іконки: жорстка фіксація розмірів ===== */
+/* ===== ФІКС: Уніфікований стиль для всіх іконок ===== */
 .icon-wrapper {
   width: 56px;
   height: 56px;
@@ -159,55 +135,31 @@ body{
   justify-content:center;
   border-radius: 14px;
   flex-shrink:0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
-  /* прибираєм рамку/outline якщо були */
+  /* Прибрали фон, який створював "рамку" */
+  background: transparent; 
   border: none;
   box-shadow: none;
 }
 
-/* For <img class="logo"> and inline <svg class="logo"> */
-.icon-wrapper img.logo,
-.icon-wrapper svg.logo,
-.icon-wrapper svg,
-.icon-wrapper img {
+/* Застосовуємо до всіх img та svg всередині */
+.icon-wrapper img,
+.icon-wrapper svg {
   width: 34px !important;
   height: 34px !important;
   max-width: 34px;
   max-height: 34px;
   display: block;
   object-fit: contain;
-  line-height: 0;
 }
-
-/* small-icon тепер такий же розмір — щоб усе було вирівняно */
-.small-icon {
-  width: 56px;
-  height: 56px;
-  min-width: 56px;
-  min-height: 56px;
-  border-radius: 14px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background: linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
+.icon-wrapper svg {
+  stroke: var(--text);
+  fill: none;
 }
+/* ========================================================= */
 
-/* якщо у svg стоїть stroke=currentColor — контролюй колір: */
-.icon-wrapper svg { color: var(--text); stroke: currentColor; fill: none; }
-
-/* прибрали liquid-outline стиль повністю (залишив на випадок) */
-.liquid-outline {
-  background: none !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
-/* Заголовки і хедер картки */
 .card-head { display:flex; align-items:center; gap:14px; margin-bottom:6px; }
-.card-head .logo { /* backup: вирівнювання, якщо деінде ще прописано */ width:34px; height:34px; }
 .card-head h3 { margin:0; font-size:18px; font-weight:700; color:var(--text); }
 
-/* Анімована стрілка праворуч */
 .arrow-icon {
   position: absolute;
   right: 18px;
@@ -220,24 +172,22 @@ body{
   transition: transform .28s ease, opacity .28s ease;
 }
 
-.card:hover .arrow-icon {
+a.card:hover .arrow-icon {
   opacity: 1;
   transform: translateY(-50%) translateX(6px);
   color: var(--text);
 }
 
-/* Тексти */
 .muted { color: var(--muted); font-size:15px; line-height:1.5; }
-.card-body { margin: 10px 0; color: var(--text); }
 .card-foot { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:auto; }
 .price{ font-weight:700; font-size:18px }
 .currency{ font-size:13px; color:var(--muted); margin-left:6px }
 
-/* details page override (тільки якщо використовуєш) */
 .details-page .card { cursor: default; }
-.details-page .card:hover { transform: none; box-shadow: var(--soft-shadow-1), var(--soft-shadow-2); }
+.details-page a.card:hover { transform: none; box-shadow: var(--soft-shadow-1), var(--soft-shadow-2); }
+.details-page .card:hover { transform: none; box-shadow: 0 8px 40px rgba(40,60,90,0.10), 0 6px 20px rgba(0,0,0,0.06), var(--soft-shadow-2); }
 
-/* Кнопки */
+
 .btn{
   display:inline-flex;
   align-items:center;
@@ -262,27 +212,46 @@ body{
   box-shadow: 0 10px 30px rgba(120,100,255,0.14);
 }
 
-/* back button */
 .back-btn { padding:10px 14px; border-radius:14px; display:flex; align-items:center; gap:8px; text-decoration:none; color:var(--text); transition: all .2s ease; }
 .back-btn:hover { transform: translateX(-4px); }
 .back-btn svg { width:16px; height:16px; stroke-width:2.4; stroke:currentColor; }
 
-/* footer */
 .footer { padding:14px 18px; text-align:center; color:var(--muted); font-size:13px; }
-
-/* links */
 a { color:#2549f2; text-decoration:none; }
 a:hover { text-decoration:underline; }
 
-/* reveal animation util */
-.reveal { opacity: 0; transform: translateY(30px); transition: opacity .8s ease-out, transform .6s ease-out; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
+/* Styles for Stats page carousel */
+.carousel {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    padding: 10px;
+    /* Hide scrollbar */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE 10+ */
+}
+.carousel::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+}
+.carousel .card {
+    flex: 0 0 80%; /* Card width */
+    max-width: 320px;
+    height: 400px; /* Example height */
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
 
-/* RESPONSIVE tweaks */
+
 @media (max-width:640px){
   .header { padding:6px 10px; border-radius: 22px; font-size:14px; }
   .card { padding:18px; border-radius: 20px; }
   .title { font-size:15px; }
   .arrow-icon { right: 12px; }
   .cards { gap:18px; grid-template-columns: 1fr; }
+  .carousel .card { flex-basis: 90%; }
 }
