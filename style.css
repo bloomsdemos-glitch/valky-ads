@@ -2,7 +2,7 @@
 
 :root{
   --bg: #e9eef7;
-  --custom-bg: url('images/IMG_4126.jpeg); /* шлях до твого фону */
+  --custom-bg: url('images/IMG_4126.jpeg'); /* шлях до твого фону */
   --frost-70: rgba(255,255,255,0.35);
   --frost-50: rgba(255,255,255,0.20);
   --frost-30: rgba(255,255,255,0.10);
