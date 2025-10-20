@@ -454,3 +454,31 @@ input[type="range"]::-moz-range-thumb {
     border: 3px solid #fff;
     box-shadow: 0 4px 10px rgba(120,100,255,0.2);
 }
+
+/* === ОНОВЛЕННЯ QUIZ: Іконки-чекбокси (зліва) === */
+
+/* Робимо кнопку гнучкою, щоб вирівняти іконку і текст */
+.quiz-option {
+    display: flex;
+    align-items: center; /* Це вирівняє їх по вертикалі */
+}
+
+.quiz-option span {
+    padding-left: 15px; /* Відступ, щоб текст не прилипав до іконки */
+}
+
+/* Стиль самої іконки */
+.quiz-option i {
+    font-size: 24px;
+    color: var(--muted);
+    opacity: 0.5;
+    transition: all 0.2s ease;
+    flex-shrink: 0; /* Забороняємо іконці стискатись */
+}
+
+/* Стиль "обраної" іконки */
+.quiz-option.selected i {
+    color: var(--text);
+    opacity: 1;
+    transform: scale(1.1); /* Легке збільшення */
+}
