@@ -2,7 +2,7 @@
 
 :root{
   --bg: #e9eef7;
-  --custom-bg: url('images/BigIceandbag.jpg'); /* шлях до твого фону */
+  --custom-bg: url('images/IMG_4126.jpeg); /* шлях до твого фону */
   --frost-70: rgba(255,255,255,0.35);
   --frost-50: rgba(255,255,255,0.20);
   --frost-30: rgba(255,255,255,0.10);
@@ -29,7 +29,7 @@ body {
   background-color: var(--bg); /* Це запасний колір, якщо фон не завантажиться */
   
   /* --- Ось тут вся магія --- */
-  background-image: url('images/BigIceandbag.jpg'); /* Переконайся, що шлях правильний */
+  background-image: url('images/IMG_4126.jpeg'); /* Переконайся, що шлях правильний */
   background-size: cover; /* ЗАМІСТЬ 'auto'. Масштабує фон, щоб він покрив весь екран, обрізаючи мінімум */
   background-position: center center; /* Завжди тримає центр картинки в центрі екрана */
   background-attachment: fixed; /* Фон залишається на місці, коли ти скролиш. Дуже стильний ефект */
