@@ -159,6 +159,11 @@ a.card:hover {
     height: 28px !important;
 }
 
+/* === Стилі для Font Awesome іконок === */
+.icon-wrapper i {
+  font-size: 26px; /* Підбираємо візуально під 28px */
+  color: var(--text);
+}
 
 .card-head { display:flex; align-items:center; gap:14px; margin-bottom:6px; }
 .card-head h3 { margin:0; font-size:18px; font-weight:700; color:var(--text); }
