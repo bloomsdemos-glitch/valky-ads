@@ -15,13 +15,82 @@
             </a>
             <div class="brand"><h1 class="title">Швидкий старт</h1></div>
         </header>
-        <main class="cards">
-            <div class="card">
-                <h3>Тут буде інтерактивний тест</h3>
-                <p class="muted">Ця сторінка в розробці. Скоро тут з'явиться тест, який допоможе вам обрати найкращий варіант реклами.</p>
-            </div>
+
+        <main class="quiz-container">
+            <section class="quiz-step" id="step-1">
+                <h2 class="quiz-title">Оберіть ваш варіант:</h2>
+                <button class="quiz-option" data-target="step-A">🔘 У мене вже є готове оголошення</button>
+                <button class="quiz-option" data-target="step-B">🔘 У мене ще немає готового оголошення</button>
+                <button class="quiz-option" data-target="step-C">🔘 Хочу розіграти товар/послугу</button>
+                <a href="packages-list.html" class="quiz-option">🔘 Хочу переглянути готові рекламні плани</a>
+                <a href="#" class="quiz-option order-link" data-service="Ніфіга не зрозуміло, потрібна допомога">🔘 Ууу, це капєц, ніфіга не зрозуміло...</a>
+            </section>
+
+            <section class="quiz-step hidden" id="step-A">
+                <button class="quiz-back" data-target="step-1">↩️ Назад</button>
+                <h2 class="quiz-title">Чудово! Що далі?</h2>
+                <button class="quiz-option" data-target="result-A1">◽️ Хочу просто опублікувати в чаті і на каналі</button>
+                <button class="quiz-option" data-target="result-A2">◽️ Хочу спробувати щось нове / нестандартне</button>
+            </section>
+
+            <section class="quiz-step hidden" id="step-B">
+                <button class="quiz-back" data-target="step-1">↩️ Назад</button>
+                <h2 class="quiz-title">Не проблема, зробимо!</h2>
+                <button class="quiz-option" data-target="step-B-common" data-choice="Стандартна публікація (створення + розміщення)">◽️ Хочу, щоб ви створили візуал і текст (стандартне оголошення)</button>
+                <button class="quiz-option" data-target="step-B-common" data-choice="Нестандартна публікація (створення + розміщення)">◽️ Хочу, щоб ви створили щось цікавіше</button>
+            </section>
+
+            <section class="quiz-step hidden" id="step-C">
+                <button class="quiz-back" data-target="step-1">↩️ Назад</button>
+                <h2 class="quiz-title">Розіграш – це завжди топ!</h2>
+                <button class="quiz-option" data-target="step-C-ready">◽️ У мене вже все готово, треба просто опублікувати</button>
+                <a href="#" class="quiz-option order-link" data-service="Потрібна допомога з оформленням розіграшу">◽️ Потрібна допомога з оформленням розіграшу</a>
+            </section>
+
+            <section class="quiz-step hidden" id="step-B-common">
+                <button class="quiz-back" data-target="step-B">↩️ Назад</button>
+                <h2 class="quiz-title">Який у вас бюджет?</h2>
+                <div class="slider-container">
+                    <input type="range" id="budget-slider" min="500" max="5000" value="1000" step="100">
+                    <div class="budget-display">Ваш бюджет: <span id="budget-value">1000</span> грн</div>
+                </div>
+                <h2 class="quiz-title">Де саме?</h2>
+                <a href="#" class="quiz-option order-link" data-service-type="B">◽️ Канал і чат</a>
+                <a href="#" class="quiz-option order-link" data-service-type="B">◽️ Базарчик</a>
+                <a href="#" class="quiz-option order-link" data-service-type="B">◽️ Всюди одразу</a>
+            </section>
+
+             <section class="quiz-step hidden" id="step-C-ready">
+                <button class="quiz-back" data-target="step-C">↩️ Назад</button>
+                <h2 class="quiz-title">Де публікуємо готовий розіграш?</h2>
+                <a href="#" class="quiz-option order-link" data-service="Готовий розіграш: Канал і чат">◽️ Канал і чат</a>
+                <a href="#" class="quiz-option order-link" data-service="Готовий розіграш: Базарчик">◽️ Базарчик</a>
+                <a href="#" class="quiz-option order-link" data-service="Готовий розіграш: Всюди одразу">◽️ Всюди одразу</a>
+            </section>
+
+            <section class="quiz-step hidden" id="result-A1">
+                <button class="quiz-back" data-target="step-A">↩️ Назад</button>
+                <h2 class="quiz-title">Вам підійде:</h2>
+                <a href="service-placeholder.html?service=Пакет СТАНДАРТ%2B" class="quiz-option">✅ «СТАНДАРТ+» (2в1) - Переглянути деталі</a>
+                <a href="service-placeholder.html?service=Пакет PRO" class="quiz-option">✅ «PRO» - Переглянути деталі</a>
+            </section>
+
+            <section class="quiz-step hidden" id="result-A2">
+                <button class="quiz-back" data-target="step-A">↩️ Назад</button>
+                <h2 class="quiz-title">Вам підійде:</h2>
+                <p class="muted">Оберіть один з варіантів або готовий пакет, що включає нестандартні рішення:</p>
+                <a href="extras-list.html" class="quiz-option">◽️ Нестандартні варіанти (Нативна, Інтерактив...)</a>
+                <a href="service-placeholder.html?service=Пакет PRO" class="quiz-option">◽️ Пакет «PRO»</a>
+                <a href="service-placeholder.html?service=Пакет PREMIUM" class="quiz-option">◽️ Пакет «PREMIUM»</a>
+                <a href="service-placeholder.html?service=Підписка" class="quiz-option">◽️ «ПІДПИСКА»</a>
+            </section>
+
+
         </main>
+        
+        <a href="index.html" class="quiz-home-btn">🏘 НА ГОЛОВНУ</a>
     </div>
-    <script src="script.js"></script>
+    
+    <script src="quiz.js"></script>
 </body>
 </html>
