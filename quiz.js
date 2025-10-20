@@ -1,4 +1,4 @@
-// === МОЗОК ДЛЯ QUIZ ===
+// === МОЗОК ДЛЯ QUIZ (v2.0 з іконками) ===
 
 // ВАЖЛИВО! Заміни 'TвійНікнейм' на свій реальний нікнейм в Telegram
 const telegramUsername = 'TвійНікнейм'; 
@@ -32,19 +32,58 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // === ЛОГІКА ДЛЯ ІКОНОК ===
+    function handleIconSelection(clickedButton) {
+        // Знаходимо батьківську секцію
+        const parentStep = clickedButton.closest('.quiz-step');
+        if (!parentStep) return;
+
+        // Знаходимо всі опції в цій секції
+        const optionsInStep = parentStep.querySelectorAll('.quiz-option');
+
+        // Скидаємо всі іконки в цій секції
+        optionsInStep.forEach(opt => {
+            opt.classList.remove('selected');
+            const icon = opt.querySelector('i');
+            if (icon) {
+                icon.classList.remove('fa-solid');
+                icon.classList.add('fa-regular');
+            }
+        });
+
+        // Вмикаємо іконку для натиснутої кнопки
+        clickedButton.classList.add('selected');
+        const clickedIcon = clickedButton.querySelector('i');
+        if (clickedIcon) {
+            clickedIcon.classList.remove('fa-regular');
+            clickedIcon.classList.add('fa-solid');
+        }
+    }
+
     // Додаємо логіку на всі кнопки-опції
     allOptions.forEach(button => {
         button.addEventListener('click', (e) => {
-            const targetStepId = e.currentTarget.dataset.target;
+            // e.currentTarget - це кнопка, на яку ми натиснули
+            const clickedButton = e.currentTarget;
+            
+            // 1. Оновлюємо іконку
+            handleIconSelection(clickedButton);
+
+            // 2. Переходимо на наступний крок (якщо він є)
+            const targetStepId = clickedButton.dataset.target;
             if (targetStepId) {
                 // Зберігаємо вибір для кроку B
-                if (e.currentTarget.dataset.choice) {
-                    userChoices.stepB_choice = e.currentTarget.dataset.choice;
+                if (clickedButton.dataset.choice) {
+                    userChoices.stepB_choice = clickedButton.dataset.choice;
                 }
-                showStep(targetStepId);
+                // Чекаємо 200мс, щоб юзер побачив зміну іконки
+                setTimeout(() => {
+                    showStep(targetStepId);
+                }, 200);
             }
         });
     });
+    // ===============================
 
     // Додаємо логіку на кнопки "Назад"
     allBackButtons.forEach(button => {
@@ -67,12 +106,16 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', (e) => {
             e.preventDefault(); // Не даємо посиланню перейти
             
+            // Вмикаємо іконку (якщо це теж .quiz-option)
+            handleIconSelection(e.currentTarget);
+
             let serviceName = e.currentTarget.dataset.service;
             const serviceType = e.currentTarget.dataset.serviceType;
+            const linkText = e.currentTarget.querySelector('span')?.textContent.trim() || e.currentTarget.textContent.trim();
 
             // Якщо це замовлення з кроку B (зі слайдером)
             if (serviceType === 'B') {
-                userChoices.location = e.currentTarget.textContent.trim().replace('◽️ ', '');
+                userChoices.location = linkText;
                 serviceName = `
 Замовлення зі "Швидкого старту":
 - Тип: ${userChoices.stepB_choice}
@@ -83,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Якщо це просте замовлення
             if (!serviceName) {
-                serviceName = e.currentTarget.textContent.trim().replace('◽️ ', '');
+                serviceName = linkText;
             }
 
             const message = `Привіт! Мене цікавить послуга:\n${serviceName}`;
@@ -91,7 +134,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const telegramUrl = `https://t.me/${telegramUsername}?text=${encodedMessage}`;
             
             // Відкриваємо Телеграм
-            window.open(telegramUrl, '_blank');
+            setTimeout(() => {
+                 window.open(telegramUrl, '_blank');
+            }, 200); // Теж невелика затримка
         });
     });
 
