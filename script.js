@@ -50,13 +50,14 @@ document.addEventListener('DOMContentLoaded', () => {
             // 1. Закрити всі панелі
             document.querySelectorAll('.accordion-toggle').forEach(btn => {
                 btn.classList.remove('open');
-                btn.nextElementSibling.classList.add('hidden');
+                btn.nextElementSibling.classList.remove('open');
+
             });
             
             // 2. Відкрити/закрити поточну
             if (!wasOpen) {
                 button.classList.add('open');
-                panel.classList.remove('hidden');
+                panel.classList.add('open');
                 
                 // 3. Налаштувати липку кнопку
                 const serviceName = button.querySelector('span').textContent.trim();
