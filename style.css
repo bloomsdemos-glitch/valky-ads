@@ -561,14 +561,31 @@ input[type="range"]::-moz-range-thumb {
     transform: rotate(180deg);
 }
 .info-content {
-    padding: 0 22px 20px 22px;
+    padding: 0 22px 20px 22px; /* Оригінальні відступи */
     color: var(--muted);
     font-size: 15px;
     line-height: 1.6;
+
+    /* === НОВА АНІМАЦІЯ === */
+    max-height: 0;
+    overflow: hidden;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin: 0;
+    transition: max-height 0.4s ease-out, 
+                padding-top 0.4s ease-out, 
+                padding-bottom 0.4s ease-out;
 }
 .info-content p {
     margin: 0;
 }
+/* НОВИЙ СТАН "ВІДКРИТО" */
+.info-content.open {
+    max-height: 500px; /* Запас висоти */
+    padding-top: 0; /* Вже був 0 */
+    padding-bottom: 20px; /* Повертаємо відступ */
+}
+
 
 /* --- Акордеон --- */
 .accordion-item {
