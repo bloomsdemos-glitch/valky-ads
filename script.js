@@ -28,14 +28,22 @@ orderButtons.forEach(button => {
 document.addEventListener('DOMContentLoaded', () => {
     
     // --- Інфо-блок ---
-    const infoToggle = document.getElementById('info-toggle');
-    const infoContent = document.getElementById('info-content');
-    if (infoToggle && infoContent) {
-        infoToggle.addEventListener('click', () => {
-            infoToggle.classList.toggle('open');
-            infoContent.classList.toggle('hidden');
-        });
-    }
+const infoToggle = document.getElementById('info-toggle');
+const infoContent = document.getElementById('info-content');
+if (infoToggle && infoContent) {
+    infoToggle.addEventListener('click', () => {
+        infoToggle.classList.toggle('open');
+
+        // НОВА ЛОГІКА:
+        // 1. При першому кліку - прибрати .hidden
+        if (infoContent.classList.contains('hidden')) {
+            infoContent.classList.remove('hidden');
+        }
+        // 2. Тепер просто вмикати/вимикати .open
+        infoContent.classList.toggle('open');
+    });
+}
+
 
     // --- Акордеон ---
     const accordions = document.querySelectorAll('.accordion-toggle');
@@ -58,7 +66,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!wasOpen) {
                 button.classList.add('open');
                 panel.classList.add('open');
-                
+                panel.classList.remove('hidden');
+
                 // 3. Налаштувати липку кнопку
                 const serviceName = button.querySelector('span').textContent.trim();
                 stickyBtn.dataset.service = `Нативна реклама: ${serviceName}`;
