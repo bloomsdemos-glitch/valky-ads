@@ -498,27 +498,26 @@ a:hover { text-decoration:underline; }
 
 /* === 3. ВИПРАВЛЕНО: Кнопка "Назад" у квізі === */
 .quiz-back {
-    background: none;
-    box-shadow: none;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
+    /* === ПОВЕРТАЄМО ЛЕГКИЙ СКЛЯНИЙ СТИЛЬ === */
+    background: linear-gradient(145deg, var(--frost-50) 0%, var(--frost-30) 100%);
+    backdrop-filter: blur(12px) saturate(120%);
+    -webkit-backdrop-filter: blur(12px) saturate(120%);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,0.1), 0 4px 10px rgba(40,60,90,0.04);
     border: none;
+
     font-weight: 500;
     color: var(--muted); 
     padding: 14px 22px; 
     border-radius: var(--radius);
+
     display: flex; 
     align-items: center;
     gap: 8px;
     cursor: pointer;
-    transition: background .2s ease;
+
+    transition: all .2s ease; /* Додаємо transition для всіх ефектів */
 }
 
-.quiz-back:hover {
-    background: var(--frost-30); 
-    transform: none; 
-    box-shadow: none;
-}
 .quiz-back:active {
     transform: translateY(1px) scale(0.98);
     background: var(--frost-50);
@@ -545,6 +544,8 @@ a:hover { text-decoration:underline; }
         var(--soft-shadow-2);
     backdrop-filter: blur(24px) saturate(150%);
     -webkit-backdrop-filter: blur(24px) saturate(150%);
+    width: auto; /* (каже "не розтягуйся") */
+    align-self: center; /* (центрує кнопку) */
     
     font-weight: 600; /* <-- Зробимо трохи жирнішим за 500 */
     text-decoration: none; 
