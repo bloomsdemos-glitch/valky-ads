@@ -2,7 +2,7 @@
 
 :root{
   --bg: #e9eef7;
-  --custom-bg: url('images/small skies.jpg'); /* шлях до твого фону */
+  --custom-bg: url('images/crowdsky.jpg'); /* шлях до твого фону */
   --frost-70: rgba(255,255,255,0.35);
   --frost-50: rgba(255,255,255,0.20);
   --frost-30: rgba(255,255,255,0.10);
@@ -28,7 +28,7 @@ html {
 
     /* === "ПЛАВАЮЧИЙ" АЛЕ ПЛАВНИЙ ФОН === */
     background-color: var(--bg); /* Запасний колір */
-    background-image: url('images/small skies.jpg');
+    background-image: url('images/crowdsky.jpg');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
