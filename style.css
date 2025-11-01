@@ -377,16 +377,16 @@ a:hover { text-decoration:underline; }
     z-index: 1;
 }
 
-/* === ОНОВЛЕНІ СТИЛІ ДЛЯ QUIZ (Glassmorph Style) === */
+/* === ОНОВЛЕНІ СТИЛІ ДЛЯ QUIZ (v3.0 - Виправлено) === */
 
 .hidden {
-    display: none !important; /* Головний клас для ховання кроків */
+    display: none !important; 
 }
 
 .quiz-container {
     display: flex;
     flex-direction: column;
-    gap: 18px; /* Робимо проміжки як у .cards */
+    gap: 18px; 
     width: 100%;
 }
 
@@ -396,17 +396,60 @@ a:hover { text-decoration:underline; }
     gap: 18px;
 }
 
+/* === 1. ВИПРАВЛЕНО: Стиль "Бульбашка" для питань === */
 .quiz-title {
-    font-size: 18px; /* Зменшили (було 22px) */
-    font-weight: 600; /* Зробили менш жирним (було 700) */
+    font-size: 18px;
+    font-weight: 500; /* Ставимо 500, бо 600 у нас не імпортовано */
     color: var(--text);
     margin: 0;
     
-    padding: 16px 22px; /* Зменшили відступ (було 20px) */
+    padding: 18px 22px; 
     border-radius: var(--radius); 
     text-align: left;
     
-    /* === Стилі зі скляної картки .card (залишаються) === */
+    /* === НОВИЙ СТИЛЬ: БУЛЬБАШКА === */
+    background: #fff; /* Чистий білий фон */
+    border: 1px solid rgba(255, 255, 255, 0.8); 
+    box-shadow:
+        0 8px 40px rgba(40,60,90,0.10),
+        0 6px 20px rgba(0,0,0,0.06),
+        var(--soft-shadow-2);
+    
+    position: relative; /* Це потрібно для "хвостика" */
+    
+    /* Прибираємо старе скло */
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+/* === ДОДАНО: "Хвостик" для бульбашки === */
+.quiz-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px; /* Позиція знизу */
+    left: 30px; /* Позиція зліва */
+    
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #fff; /* Того ж кольору, що й фон */
+}
+
+
+/* === 2. ВИПРАВЛЕНО: Головний стиль для "скляних" кнопок-опцій === */
+.quiz-option {
+    display: block;
+    padding: 20px 22px; 
+    border-radius: var(--radius);
+    text-decoration: none;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text);
+    white-space: normal; 
+    
+    /* === Стилі зі скляної картки .card === */
     background: linear-gradient(145deg, var(--frost-70) 0%, var(--frost-30) 100%);
     border: 1px solid rgba(255,255,255,0.18);
     box-shadow:
@@ -416,51 +459,16 @@ a:hover { text-decoration:underline; }
         var(--soft-shadow-2);
     backdrop-filter: blur(24px) saturate(150%);
     -webkit-backdrop-filter: blur(24px) saturate(150%);
-}
-
-
-
-/* * === ГОЛОВНИЙ ФІКС: Робимо опції схожими на картки ===
-* Ми беремо стилі з .card і застосовуємо їх тут 
-*/
-.quiz-option, 
-.quiz-home-btn {
-    /* Ми залишили його в групі з .quiz-option, 
-       але тепер перевизначимо стиль на яскравий */
-    background: var(--accent-grad);
-    color: #fff;
-    box-shadow: 0 10px 30px rgba(120,100,255,0.14);
-    text-align: center;
-    font-weight: 700;
     
-    /* Додаємо для центрування іконки */
+    transition: transform .22s cubic-bezier(.2,.9,.3,1), box-shadow .22s ease;
+    cursor: pointer;
+
+    /* Це потрібно для іконок (кружечків) всередині кнопок */
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-.quiz-home-btn:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(120,100,255,0.2);
-}
-.quiz-home-btn:active {
-    transform: translateY(1px) scale(0.98);
-    box-shadow: 0 5px 20px rgba(120,100,255,0.2);
 }
 
-/* === ДОДАНО: Стиль для іконки "Дім" === */
-.quiz-home-btn svg {
-    width: 20px;
-    height: 20px;
-    stroke: currentColor;
-    stroke-width: 2.4; /* Робимо жирнішою */
-}
-
-
-
-/* === Haptic feedback (відчуття натискання) === */
-.quiz-option:hover, 
-.quiz-back:hover {
+.quiz-option:hover {
     transform: translateY(-8px);
     box-shadow:
         inset 0 1px 1px rgba(255,255,255,0.24),
@@ -468,40 +476,35 @@ a:hover { text-decoration:underline; }
         0 10px 34px rgba(0,0,0,0.12),
         var(--soft-shadow-2);
 }
-.quiz-option:active, 
-.quiz-back:active {
-    transform: translateY(1px) scale(0.98); /* Ефект "втискання" */
+.quiz-option:active {
+    transform: translateY(1px) scale(0.98); 
     transition-duration: .1s;
 }
 
+
+/* === 3. ВИПРАВЛЕНО: Кнопка "Назад" у квізі === */
 .quiz-back {
-    /* Прибираємо стиль картки */
     background: none;
     box-shadow: none;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     border: none;
-
     font-weight: 500;
-    color: var(--muted); /* Робимо текст менш яскравим */
-    padding: 14px 22px; /* Зменшуємо */
+    color: var(--muted); 
+    padding: 14px 22px; 
     border-radius: var(--radius);
-
     display: flex; 
     align-items: center;
     gap: 8px;
     cursor: pointer;
-
-    /* Додаємо ледь помітний фон при наведенні */
     transition: background .2s ease;
 }
 
 .quiz-back:hover {
-    background: var(--frost-30); /* Ледь помітне "скло" */
-    transform: none; /* Прибираємо "стрибок" */
+    background: var(--frost-30); 
+    transform: none; 
     box-shadow: none;
 }
-
 .quiz-back:active {
     transform: translateY(1px) scale(0.98);
     background: var(--frost-50);
@@ -516,14 +519,21 @@ a:hover { text-decoration:underline; }
 }
 
 
-
-/* Кнопка "На головну" - яскрава, як .btn.primary */
+/* === 4. ВИПРАВЛЕНО: Кнопка "На головну" (фіолетова) === */
 .quiz-home-btn {
     background: var(--accent-grad);
     color: #fff;
     box-shadow: 0 10px 30px rgba(120,100,255,0.14);
-    text-align: center;
     font-weight: 700;
+    text-decoration: none; /* <- Важливо, щоб не було підкреслення */
+    
+    /* Layout */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px 22px; /* <- Важливо, ці стилі загубились */
+    border-radius: var(--radius); /* <- Важливо, ці стилі загубились */
 }
 .quiz-home-btn:hover {
     transform: translateY(-8px);
@@ -533,6 +543,14 @@ a:hover { text-decoration:underline; }
     transform: translateY(1px) scale(0.98);
     box-shadow: 0 5px 20px rgba(120,100,255,0.2);
 }
+
+.quiz-home-btn svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    stroke-width: 2.4;
+}
+
 
 
 /* === Оновлюємо контейнер слайдера === */
