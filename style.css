@@ -114,6 +114,20 @@ body {
 
 .title{ margin:0; font-size:16px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--text); }
 .subtitle{ margin:0; font-size:13px; color:var(--muted); }
+.form-hint {
+    font-size: 15px; /* Менший шрифт */
+    font-weight: 500; /* Нормальна жирність */
+    color: var(--muted); /* Сірий, приглушений колір */
+    text-align: center; /* По центру */
+    
+    /* Прибираємо всі стилі заголовка */
+    margin: 0 0 16px 0; /* Невеликий відступ знизу */
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
 
 .cards{
   display:grid;
