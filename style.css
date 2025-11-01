@@ -469,12 +469,26 @@ a:hover { text-decoration:underline; }
     transition-duration: .1s;
 }
 
-/* Кнопка "Назад" - менш помітна */
 .quiz-back {
     background: linear-gradient(145deg, var(--frost-50) 0%, var(--frost-30) 100%);
     font-weight: 600;
     color: var(--muted);
+    
+    /* === ДОДАНО: для вирівнювання іконки === */
+    display: flex; 
+    align-items: center;
+    gap: 8px; /* Відступ між іконкою і текстом */
 }
+
+/* === ДОДАНО: стилі для самої SVG-іконки === */
+.quiz-back svg {
+    width: 16px;
+    height: 16px;
+    stroke-width: 2.4;
+    stroke: currentColor; /* Візьме колір тексту кнопки */
+    flex-shrink: 0;
+}
+
 
 /* Кнопка "На головну" - яскрава, як .btn.primary */
 .quiz-home-btn {
