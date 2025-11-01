@@ -25,31 +25,54 @@
 
 html {
     margin: 0;
-    height: 100%; /* Це важливо для body */
+    /* Все, що стосувалось фону, і height: 100% - прибрано. */
+    /* Цей блок тепер чистий. */
+}
 
-    /* === ПЕРЕНЕСЛИ ФОН СЮДИ === */
-    background-color: var(--bg); /* Запасний колір */
+body {
+  margin: 0;
+  padding: 28px;
+  display: flex;
+
+  /* === ЗМІНИ ДЛЯ ПРАВИЛЬНОГО ЦЕНТРУВАННЯ === */
+  flex-direction: column; 
+  align-items: center; /* Це буде центрувати твій .wrap по горизонталі */
+  /* ======================================= */
+  
+  min-height: 100vh;
+
+  /* === ВАЖЛИВО: для "залізного" фону === */
+  position: relative; 
+  z-index: 1; /* Робимо весь контент "верхнім шаром" */
+  /* ==================================== */
+
+  -webkit-user-select: none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  /* height: 100% і justify-content прибрані, бо вони тут не потрібні */
+}
+
+body::before {
+    content: ''; /* Обов'язково */
+
+    /* === НАШ НОВИЙ "ЗАЛІЗНИЙ" ФОН === */
     background-image: url('images/small skies.jpg');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
+    background-attachment: fixed; /* <-- МИ ПОВЕРНУЛИ ТВОЮ УЛЮБЛЕНУ ФІЧУ! */
     /* === КІНЕЦЬ ФОНУ === */
-}
 
-body {
-  height: 100%; 
-  margin: 0;
+    /* === Прибиваємо його до екрану === */
+    position: fixed; /* Він "прибитий" до екрану, а не до контенту */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 
-  /* --- ФОН ЗВІДСИ ПРИБРАНО --- */
-
-  padding: 28px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  min-height: 100vh;
-  -webkit-user-select: none;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+    /* === Ховаємо його ЗА контент === */
+    z-index: -1;
 }
 
 
