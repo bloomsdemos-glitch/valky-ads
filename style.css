@@ -22,19 +22,26 @@
 }
 
 * { box-sizing: border-box; }
-html, body { height: 100%; margin: 0; }
+
+html {
+    margin: 0;
+    height: 100%; /* Це важливо для body */
+
+    /* === ПЕРЕНЕСЛИ ФОН СЮДИ === */
+    background-color: var(--bg); /* Запасний колір */
+    background-image: url('images/small skies.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    /* === КІНЕЦЬ ФОНУ === */
+}
 
 body {
+  height: 100%; 
   margin: 0;
-  background-color: var(--bg); /* Це запасний колір, якщо фон не завантажиться */
-  
-  /* --- Ось тут вся магія --- */
-  background-image: url('images/small skies.jpg'); /* Переконайся, що шлях правильний */
-  background-size: cover; /* ЗАМІСТЬ 'auto'. Масштабує фон, щоб він покрив весь екран, обрізаючи мінімум */
-  background-position: center center; /* Завжди тримає центр картинки в центрі екрана */
-  background-repeat: no-repeat; /* Повторення нам більше не потрібне */
-  /* --- Кінець магії --- */
-  
+
+  /* --- ФОН ЗВІДСИ ПРИБРАНО --- */
+
   padding: 28px;
   display: flex;
   align-items: flex-start;
