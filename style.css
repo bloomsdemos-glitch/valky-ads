@@ -25,55 +25,33 @@
 
 html {
     margin: 0;
-    /* Все, що стосувалось фону, і height: 100% - прибрано. */
-    /* Цей блок тепер чистий. */
+
+    /* === "ПЛАВАЮЧИЙ" АЛЕ ПЛАВНИЙ ФОН === */
+    background-color: var(--bg); /* Запасний колір */
+    background-image: url('images/small skies.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    /* background-attachment: fixed; <-- МИ НЕ ДОДАЄМО ЦЕЙ РЯДОК! */
+    /* === КІНЕЦЬ ФОНУ === */
 }
 
 body {
   margin: 0;
   padding: 28px;
   display: flex;
+  flex-direction: column;
+  align-items: center; 
+  min-height: 100vh; /* Гарантує, що фон буде мінімум на весь екран */
 
-  /* === ЗМІНИ ДЛЯ ПРАВИЛЬНОГО ЦЕНТРУВАННЯ === */
-  flex-direction: column; 
-  align-items: center; /* Це буде центрувати твій .wrap по горизонталі */
-  /* ======================================= */
-  
-  min-height: 100vh;
-
-  /* === ВАЖЛИВО: для "залізного" фону === */
-  position: relative; 
-  z-index: 1; /* Робимо весь контент "верхнім шаром" */
-  /* ==================================== */
+  /* Всі z-index і position: relative звідси прибрані */
 
   -webkit-user-select: none;
   -ms-overflow-style: none;
   scrollbar-width: none;
-
-  /* height: 100% і justify-content прибрані, бо вони тут не потрібні */
 }
 
-body::before {
-    content: ''; /* Обов'язково */
 
-    /* === НАШ НОВИЙ "ЗАЛІЗНИЙ" ФОН === */
-    background-image: url('images/small skies.jpg');
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed; /* <-- МИ ПОВЕРНУЛИ ТВОЮ УЛЮБЛЕНУ ФІЧУ! */
-    /* === КІНЕЦЬ ФОНУ === */
-
-    /* === Прибиваємо його до екрану === */
-    position: fixed; /* Він "прибитий" до екрану, а не до контенту */
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    /* === Ховаємо його ЗА контент === */
-    z-index: -1;
-}
 
 
 .wrap{
