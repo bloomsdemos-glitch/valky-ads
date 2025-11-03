@@ -1029,9 +1029,28 @@ body.details-page {
 .modal-data.hidden {
     display: none;
 }
-/* === ФІКС: Зменшуємо кнопки на сторінці статистики === */
-.stats-triggers {
-    /* Робимо колонки вужчими, ніж стандартні .cards */
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 18px; /* І проміжок менший */
+/* === ФІКС: Робимо кнопки на сторінці статистики "кнопочками" === */
+
+/* Ми залишаємо стандартну сітку .cards, 
+   але робимо кнопки всередині .stats-triggers компактнішими.
+*/
+.stats-triggers .card {
+    /* Зменшуємо вертикальні відступи (було 22px) */
+    padding-top: 18px;
+    padding-bottom: 18px;
+    
+    /* І прибираємо зайвий відступ під заголовком, бо опису вже немає */
+    gap: 0;
+}
+
+.stats-triggers .card .card-head {
+    margin-bottom: 0; /* Прибираємо відступ знизу від заголовка */
+}
+
+/* Іконки теж можна зробити трохи меншими, щоб все було гармонійно */
+.stats-triggers .card .icon-wrapper {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
 }
