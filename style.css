@@ -950,7 +950,7 @@ body.details-page {
     right: 14px;
     width: 36px;
     height: 36px;
-    background: var(--frost-30);
+    background: rgba(255, 255, 255, 0.4); /* Було var(--frost-30) */
     border: none;
     border-radius: 50%;
     color: var(--text);
@@ -1029,28 +1029,35 @@ body.details-page {
 .modal-data.hidden {
     display: none;
 }
-/* === ФІКС: Робимо кнопки на сторінці статистики "кнопочками" === */
+/* === ФІКС: Компактні кнопки (як .quiz-option, але не широкі) === */
 
-/* Ми залишаємо стандартну сітку .cards, 
-   але робимо кнопки всередині .stats-triggers компактнішими.
-*/
-.stats-triggers .card {
-    /* Зменшуємо вертикальні відступи (було 22px) */
-    padding-top: 18px;
-    padding-bottom: 18px;
+/* Контейнер: кажемо кнопкам стати по центру */
+.stats-triggers {
+    display: flex;
+    flex-wrap: wrap; /* Дозволяємо перенос */
+    justify-content: center; /* Центруємо кнопки */
+    gap: 18px; 
     
-    /* І прибираємо зайвий відступ під заголовком, бо опису вже немає */
-    gap: 0;
+    /* Прибираємо стилі сітки .cards */
+    grid-template-columns: none; 
 }
 
-.stats-triggers .card .card-head {
-    margin-bottom: 0; /* Прибираємо відступ знизу від заголовка */
+/* * Кнопки вже мають клас .quiz-option, 
+ * тому ми просто ПЕРЕВИЗНАЧАЄМО їх ширину 
+*/
+.stats-triggers .quiz-option {
+    width: auto; /* <-- ГОЛОВНИЙ ФІКС: прибираємо 100% ширину */
+    flex-grow: 1; /* Дозволяємо рости, але не більше, ніж треба */
+    
+    /* Робимо іконки трохи меншими, ніж в квізі */
+    gap: 12px;
 }
 
-/* Іконки теж можна зробити трохи меншими, щоб все було гармонійно */
-.stats-triggers .card .icon-wrapper {
-    width: 48px;
-    height: 48px;
-    min-width: 48px;
-    min-height: 48px;
+.stats-triggers .quiz-option i {
+    font-size: 20px; /* Менша іконка */
+}
+
+.stats-triggers .quiz-option span {
+    font-size: 16px;
+    font-weight: 500; /* НЕ жирний текст */
 }
