@@ -908,7 +908,7 @@ body.details-page {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5); /* Темний фон */
+    background: rgba(255, 255, 255, 0.1); /* Легкий білий фон */
     backdrop-filter: blur(10px) saturate(120%);
     -webkit-backdrop-filter: blur(10px) saturate(120%);
     z-index: 1000;
@@ -972,23 +972,21 @@ body.details-page {
 
 /* Стилизація контенту всередині поп-апу */
 .modal-content h3 {
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 18px; /* Було 20px */
+    font-weight: 500; /* Було 700 (використовуємо 500, бо він у нас є) */
     margin-top: 0;
-    margin-bottom: 12px;
+    margin-bottom: 10px; /* Було 12px */
     color: var(--text);
     
-    /* === ДОДАНО: для вирівнювання іконок === */
     display: flex;
     align-items: center;
-    gap: 12px; /* Відступ між іконкою і текстом */
+    gap: 10px; /* Було 12px */
 }
 
-/* === ДОДАНО: стилі для самих іконок === */
 .modal-content h3 i {
-    color: var(--accent-grad); /* Робимо іконку акцентним кольором */
-    font-size: 18px; /* Трохи менше за сам заголовок */
-    width: 22px; /* Фіксована ширина для вирівнювання */
+    color: var(--accent-grad);
+    font-size: 17px; /* Було 18px */
+    width: 20px; /* Було 22px */
     text-align: center;
 }
 
@@ -1000,8 +998,9 @@ body.details-page {
 }
 /* Відступ між секціями */
 .modal-content h3:not(:first-child) {
-    margin-top: 24px; 
+    margin-top: 20px; /* Було 24px */
 }
+
 
 /* Спеціальний список для клієнтів */
 .clients-list {
@@ -1029,4 +1028,10 @@ body.details-page {
 /* Ховаємо контейнер з даними */
 .modal-data.hidden {
     display: none;
+}
+/* === ФІКС: Зменшуємо кнопки на сторінці статистики === */
+.stats-triggers {
+    /* Робимо колонки вужчими, ніж стандартні .cards */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px; /* І проміжок менший */
 }
