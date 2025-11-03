@@ -899,3 +899,134 @@ input[type="range"]::-moz-range-thumb {
 body.details-page {
     padding-bottom: 140px; /* Додаємо місце знизу */
 }
+/* === НОВІ СТИЛІ ДЛЯ POP-UP (MODAL) === */
+
+/* Фон-оверлей */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Темний фон */
+    backdrop-filter: blur(10px) saturate(120%);
+    -webkit-backdrop-filter: blur(10px) saturate(120%);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px;
+    opacity: 0; /* Починаємо з прозорого */
+    transition: opacity 0.3s ease;
+    cursor: pointer; /* Можна закрити кліком на фон */
+}
+/* Стан "видно" */
+.modal-overlay:not(.hidden) {
+    opacity: 1;
+}
+
+/* Саме вікно поп-апу */
+.modal-box {
+    position: relative;
+    padding: 24px;
+    padding-top: 48px; /* Більше місця зверху для кнопки "Х" */
+    max-width: 600px;
+    width: 100%;
+    max-height: 85vh; /* Обмеження висоти */
+    overflow-y: auto; /* Додаємо скрол, якщо контенту забагато */
+    cursor: default; /* Щоб клік на вікно не закривав його */
+    
+    /* Стили з .card */
+    border-radius: var(--radius);
+    background: linear-gradient(145deg, var(--frost-70) 0%, var(--frost-30) 100%);
+    border: 1px solid rgba(255,255,255,0.18);
+    box-shadow: 0 18px 50px rgba(40,60,90,0.14), 0 10px 34px rgba(0,0,0,0.12);
+}
+
+/* Кнопка "Закрити" (Хрестик) */
+.modal-close-btn {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 36px;
+    height: 36px;
+    background: var(--frost-30);
+    border: none;
+    border-radius: 50%;
+    color: var(--text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+.modal-close-btn:hover {
+    background: var(--frost-70);
+    transform: scale(1.1);
+}
+.modal-close-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Стилизація контенту всередині поп-апу */
+.modal-content h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 12px;
+    color: var(--text);
+    
+    /* === ДОДАНО: для вирівнювання іконок === */
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Відступ між іконкою і текстом */
+}
+
+/* === ДОДАНО: стилі для самих іконок === */
+.modal-content h3 i {
+    color: var(--accent-grad); /* Робимо іконку акцентним кольором */
+    font-size: 18px; /* Трохи менше за сам заголовок */
+    width: 22px; /* Фіксована ширина для вирівнювання */
+    text-align: center;
+}
+
+.modal-content p, 
+.modal-content li {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text);
+}
+/* Відступ між секціями */
+.modal-content h3:not(:first-child) {
+    margin-top: 24px; 
+}
+
+/* Спеціальний список для клієнтів */
+.clients-list {
+    list-style: none;
+    padding-left: 0;
+    gap: 10px;
+}
+.clients-list li {
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 8px;
+}
+.clients-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--muted);
+}
+@media (min-width: 500px) {
+    .clients-list {
+        columns: 2; /* Дві колонки на екранах ширше 500px */
+    }
+}
+
+/* Ховаємо контейнер з даними */
+.modal-data.hidden {
+    display: none;
+}
