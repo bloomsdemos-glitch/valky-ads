@@ -96,6 +96,60 @@ if (infoToggle && infoContent) {
         });
     });
     
+        // === НОВА ЛОГІКА ДЛЯ POP-UP (MODAL) НА СТОРІНЦІ СТАТИСТИКИ ===
+    
+    // Знаходимо всі елементи
+    const whyUsBtn = document.getElementById('why-us-btn');
+    const clientsBtn = document.getElementById('clients-btn');
+    const modalOverlay = document.getElementById('modal-overlay');
+    const modalContent = document.getElementById('modal-content');
+    const modalCloseBtn = document.getElementById('modal-close-btn');
+
+    // Витягуємо HTML-контент з наших прихованих блоків
+    const whyUsContent = document.getElementById('why-us-content')?.innerHTML;
+    const clientsContent = document.getElementById('clients-content')?.innerHTML;
+
+    // Функція, що відкриває вікно
+    function openModal(content) {
+        if (modalOverlay && content && modalContent) {
+            modalContent.innerHTML = content; // Вставляємо потрібний контент
+            modalOverlay.classList.remove('hidden'); // Показуємо фон
+            document.body.style.overflow = 'hidden'; // Блокуємо скрол сторінки
+        }
+    }
+    
+    // Функція, що закриває вікно
+    function closeModal() {
+        if (modalOverlay) {
+            modalOverlay.classList.add('hidden'); // Ховаємо фон
+            modalContent.innerHTML = ''; // Очищуємо контент
+            document.body.style.overflow = ''; // Повертаємо скрол
+        }
+    }
+
+    // Вішаємо слухачі на кнопки-картки
+    if (whyUsBtn && whyUsContent) {
+        whyUsBtn.addEventListener('click', () => openModal(whyUsContent));
+    }
+    if (clientsBtn && clientsContent) {
+        clientsBtn.addEventListener('click', () => openModal(clientsContent));
+    }
+    
+    // Вішаємо слухачі на закриття
+    if (modalCloseBtn) {
+        modalCloseBtn.addEventListener('click', closeModal);
+    }
+    if (modalOverlay) {
+        modalOverlay.addEventListener('click', (e) => {
+            // Закриваємо, якщо клік був саме на фон (overlay), а не на вікно (modal-box)
+            if (e.target === modalOverlay) {
+                closeModal();
+            }
+        });
+    }
+    // === КІНЕЦЬ НОВОЇ ЛОГІКИ ДЛЯ POP-UP ===
+
+    
     // --- Логіка для самої "липкої" кнопки ---
     if (stickyBtn) {
         stickyBtn.addEventListener('click', () => {
