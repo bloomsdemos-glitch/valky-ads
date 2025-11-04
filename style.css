@@ -780,7 +780,6 @@ input[type="range"]::-moz-range-thumb {
     background: #fff;
     border-radius: 0 0 var(--radius) var(--radius);
     position: relative;
-    z-index: -1;
     
     /* --- Магія анімації --- */
     max-height: 0; /* Починаємо з висоти 0 */
@@ -861,11 +860,7 @@ input[type="range"]::-moz-range-thumb {
     color: var(--muted);
     border: 1px dashed #d8dde9;
     
-    /* === ОСЬ ЦЕЙ ФІКС === */
-    position: relative; /* Вмикаємо z-index */
-    z-index: 2; /* Витягуємо НАД білою карткою (яка z-index: -1) */
-}
-
+    
 
 /* --- "Липка" кнопка --- */
 .sticky-footer {
