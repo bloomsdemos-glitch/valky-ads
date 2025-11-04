@@ -730,7 +730,7 @@ input[type="range"]::-moz-range-thumb {
     padding-top: 0;
     padding-bottom: 0;
     margin: 0;
-    transition: max-height 0.4s ease-out, 
+    transition: max-height 0.4s ease-out; 
                 
 }
 .info-content p {
@@ -792,7 +792,7 @@ input[type="range"]::-moz-range-thumb {
     box-shadow: none;
     
     /* Плавний перехід для всього */
-    transition: max-height 0.4s ease-out, 
+    transition: max-height 0.4s ease-out;
                 
 }
 
