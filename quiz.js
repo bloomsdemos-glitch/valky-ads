@@ -1,4 +1,6 @@
-// === МОЗОК ДЛЯ QUIZ (v2.0 з іконками) ===
+// === МОЗОК ДЛЯ QUIZ (v2.1 - Виправлено) ===
+
+// ВАЖЛИВО! const telegramUsername ПРИБРАНО, бо він вже є в script.js
 
 // Зберігаємо вибір користувача тут
 let userChoices = {
@@ -9,6 +11,7 @@ let userChoices = {
 
 // Чекаємо, поки вся сторінка завантажиться
 document.addEventListener('DOMContentLoaded', () => {
+
     // === "ЗАПОБІЖНИК": Перевіряємо, чи ми на сторінці квізу ===
     const firstStep = document.getElementById('step-1');
     if (!firstStep) {
@@ -18,6 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     // === КІНЕЦЬ ЗАПОБІЖНИКА ===
 
+    // Якщо ми тут, значить ми 100% на сторінці квізу.
+    // Знаходимо всі елементи, які потрібні ТІЛЬКИ для квізу.
     const allSteps = document.querySelectorAll('.quiz-step');
     const allOptions = document.querySelectorAll('.quiz-option');
     const allBackButtons = document.querySelectorAll('.quiz-back');
@@ -39,14 +44,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // === ЛОГІКА ДЛЯ ІКОНОК ===
     function handleIconSelection(clickedButton) {
-        // Знаходимо батьківську секцію
         const parentStep = clickedButton.closest('.quiz-step');
         if (!parentStep) return;
 
-        // Знаходимо всі опції в цій секції
         const optionsInStep = parentStep.querySelectorAll('.quiz-option');
 
-        // Скидаємо всі іконки в цій секції
         optionsInStep.forEach(opt => {
             opt.classList.remove('selected');
             const icon = opt.querySelector('i');
@@ -56,7 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Вмикаємо іконку для натиснутої кнопки
         clickedButton.classList.add('selected');
         const clickedIcon = clickedButton.querySelector('i');
         if (clickedIcon) {
@@ -68,20 +69,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Додаємо логіку на всі кнопки-опції
     allOptions.forEach(button => {
         button.addEventListener('click', (e) => {
-            // e.currentTarget - це кнопка, на яку ми натиснули
             const clickedButton = e.currentTarget;
             
-            // 1. Оновлюємо іконку
             handleIconSelection(clickedButton);
 
-            // 2. Переходимо на наступний крок (якщо він є)
             const targetStepId = clickedButton.dataset.target;
             if (targetStepId) {
-                // Зберігаємо вибір для кроку B
                 if (clickedButton.dataset.choice) {
                     userChoices.stepB_choice = clickedButton.dataset.choice;
                 }
-                // Чекаємо 200мс, щоб юзер побачив зміну іконки
                 setTimeout(() => {
                     showStep(targetStepId);
                 }, 200);
@@ -109,16 +105,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // ГЕНЕРАТОР ПОСИЛАНЬ ДЛЯ ЗАМОВЛЕННЯ
     allOrderLinks.forEach(link => {
         link.addEventListener('click', (e) => {
-            e.preventDefault(); // Не даємо посиланню перейти
+            e.preventDefault(); 
             
-            // Вмикаємо іконку (якщо це теж .quiz-option)
             handleIconSelection(e.currentTarget);
 
             let serviceName = e.currentTarget.dataset.service;
             const serviceType = e.currentTarget.dataset.serviceType;
             const linkText = e.currentTarget.querySelector('span')?.textContent.trim() || e.currentTarget.textContent.trim();
 
-            // Якщо це замовлення з кроку B (зі слайдером)
             if (serviceType === 'B') {
                 userChoices.location = linkText;
                 serviceName = `
@@ -129,19 +123,18 @@ document.addEventListener('DOMContentLoaded', () => {
 `;
             }
 
-            // Якщо це просте замовлення
             if (!serviceName) {
                 serviceName = linkText;
             }
 
             const message = `Привіт! Мене цікавить послуга:\n${serviceName}`;
             const encodedMessage = encodeURIComponent(message);
+            // Використовуємо 'telegramUsername', який ВЖЕ ІСНУЄ з 'script.js'
             const telegramUrl = `https://t.me/${telegramUsername}?text=${encodedMessage}`;
             
-            // Відкриваємо Телеграм
             setTimeout(() => {
                  window.open(telegramUrl, '_blank');
-            }, 200); // Теж невелика затримка
+            }, 200); 
         });
     });
 
