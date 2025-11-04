@@ -78,19 +78,15 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // --- Логіка для "липкої" кнопки ---
     if (stickyBtn) {
+        // Ми додали клас .order-btn до липкої кнопки, 
+        // тому нам потрібна лише логіка для 'disabled'
         stickyBtn.addEventListener('click', () => {
             if (stickyBtn.classList.contains('disabled')) {
                 alert('Спочатку оберіть основний тип реклами, наприклад, «СТАНДАРТ+». Ця послуга є лише додатковою.');
-                return;
+                return; // Зупиняємо клік
             }
-            // Якщо кнопка не "disabled", вона автоматично спрацює 
-            // як '.order-btn', бо в неї є цей клас (якщо ми його додали)
-            // Або ми дублюємо логіку, як тут:
-            const serviceName = stickyBtn.dataset.service;
-            const message = `Привіт! Цікавить послуга: "${serviceName}"`;
-            const encodedMessage = encodeURIComponent(message);
-            const telegramUrl = `https://t.me/${telegramUsername}?text=${encodedMessage}`;
-            window.open(telegramUrl, '_blank');
+            // Якщо кнопка не 'disabled', то спрацює 
+            // загальний слухач для '.order-btn' (пункт 1)
         });
     }
 
@@ -133,8 +129,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Кнопки для "Чому у нас" (stats.html) ---
     const whyUsBtn = document.getElementById('why-us-btn');
-    const clientsBtn = document.getElementById('clients-btn');
-    if (whyUsBtn) { // Якщо ми на сторінці stats.html
+    // (Перевіряємо, чи ми на сторінці stats.html)
+    if (whyUsBtn) { 
+        const clientsBtn = document.getElementById('clients-btn');
         const whyUsContent = document.getElementById('why-us-content')?.innerHTML;
         const clientsContent = document.getElementById('clients-content')?.innerHTML;
 
@@ -148,7 +145,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Кнопки для "Переглянути приклад" (extras-list.html) ---
     const exampleButtons = document.querySelectorAll('.btn-view-example');
-    if (exampleButtons.length > 0) { // Якщо ми на сторінці extras-list.html
+    // (Перевіряємо, чи ми на сторінці extras-list.html)
+    if (exampleButtons.length > 0) { 
         exampleButtons.forEach(button => {
             button.addEventListener('click', (e) => {
                 e.stopPropagation(); // Не даємо акордеону закритись
