@@ -20,9 +20,6 @@
             </header>
         </div>
 
-
-
-
         <main class="quiz-container">
             <div class="info-box">
                 <div class="info-header" id="info-toggle">
@@ -53,7 +50,7 @@
                         <li><i class="fa-solid fa-thumbtack"></i>Закріплення рекламного посту на 24 години</li>
                         <li><i class="fa-solid fa-clock"></i>Ви самостійно обираєте час публікації</li>
                     </ul>
-                                        <div class="example-placeholder">
+                    <div class="example-placeholder">
                         <button class="btn primary btn-view-example" data-modal-target="example-interactive">
                             <i class="fa-solid fa-eye"></i>
                             <span>Переглянути приклад</span>
@@ -79,7 +76,10 @@
                         <li><i class="fa-solid fa-clock"></i>Ви самостійно обираєте час публікації</li>
                     </ul>
                     <div class="example-placeholder">
-                        <p><i>[Тут буде приклад посту...]</i></p>
+                        <button class="btn primary btn-view-example" data-modal-target="example-infopost">
+                            <i class="fa-solid fa-eye"></i>
+                            <span>Переглянути приклад</span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -100,7 +100,10 @@
                         <li><i class="fa-solid fa-clock"></i>Ви самостійно обираєте час публікації</li>
                     </ul>
                     <div class="example-placeholder">
-                        <p><i>[Тут буде приклад діалогу...]</i></p>
+                        <button class="btn primary btn-view-example" data-modal-target="example-dialog">
+                            <i class="fa-solid fa-eye"></i>
+                            <span>Переглянути приклад</span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -116,7 +119,7 @@
                     <p class="warning-text"><i class="fa-solid fa-circle-exclamation"></i><b>Додаткова послуга.</b> Доступна тільки при замовленні основного типу реклами.</p>
                     <p>Ми створюємо рекламне відео у форматі "кружечка" для Telegram.</p>
                     <div class="example-placeholder">
-                        <p><i>[Тут буде приклад кружечка...]</i></p>
+                        <p><i class="muted">Наразі недоступно</i></p>
                     </div>
                 </div>
             </div>
@@ -140,8 +143,32 @@
         <button class="btn primary order-btn" id="sticky-order-btn" data-service="">Замовити</button>
     </div>
 
+    <div class="modal-overlay hidden" id="modal-overlay">
+        <div class="modal-box glass">
+            <button class="modal-close-btn" id="modal-close-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+            <div class="modal-content" id="modal-content">
+                </div>
+        </div>
+    </div>
+
+    <div class="modal-data hidden">
+        
+        <div id="example-interactive">
+            <p>Завантажуємо приклад...</p> 
+        </div>
+
+        <div id="example-infopost">
+            <p>Завантажуємо приклад...</p>
+        </div>
+
+        <div id="example-dialog">
+            <p>Завантажуємо приклад...</p>
+        </div>
+        
+    </div>
     <script src="script.js"></script>
     <script src="quiz.js"></script> 
 </body>
-
 </html>
