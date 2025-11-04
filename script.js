@@ -147,6 +147,27 @@ if (infoToggle && infoContent) {
             }
         });
     }
+        
+    // === ДОДАНО: Логіка для кнопок "Переглянути приклад" (extras-list) ===
+    const exampleButtons = document.querySelectorAll('.btn-view-example');
+    
+    exampleButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.stopPropagation(); // Зупиняємо, щоб не закрився акордеон
+            
+            const targetId = button.dataset.modalTarget;
+            const contentHtml = document.getElementById(targetId)?.innerHTML;
+            
+            if (contentHtml) {
+                // Використовуємо ту саму функцію openModal, яку ми вже написали
+                openModal(contentHtml); 
+            } else {
+                console.error('Не знайдено контент для модального вікна: ' + targetId);
+            }
+        });
+    });
+
+
     // === КІНЕЦЬ НОВОЇ ЛОГІКИ ДЛЯ POP-UP ===
 
     
