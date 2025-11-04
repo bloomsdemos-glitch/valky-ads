@@ -1,8 +1,5 @@
 // === МОЗОК ДЛЯ QUIZ (v2.0 з іконками) ===
 
-// ВАЖЛИВО! Заміни 'TвійНікнейм' на свій реальний нікнейм в Telegram
-const telegramUsername = 'TвійНікнейм'; 
-
 // Зберігаємо вибір користувача тут
 let userChoices = {
     stepB_choice: '',
@@ -12,6 +9,14 @@ let userChoices = {
 
 // Чекаємо, поки вся сторінка завантажиться
 document.addEventListener('DOMContentLoaded', () => {
+    // === "ЗАПОБІЖНИК": Перевіряємо, чи ми на сторінці квізу ===
+    const firstStep = document.getElementById('step-1');
+    if (!firstStep) {
+        // Якщо ми НЕ на сторінці квізу (бо #step-1 немає), 
+        // то не виконуємо нічого з цього файлу.
+        return; 
+    }
+    // === КІНЕЦЬ ЗАПОБІЖНИКА ===
 
     const allSteps = document.querySelectorAll('.quiz-step');
     const allOptions = document.querySelectorAll('.quiz-option');
