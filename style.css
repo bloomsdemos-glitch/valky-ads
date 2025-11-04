@@ -899,7 +899,7 @@ input[type="range"]::-moz-range-thumb {
 body.details-page {
     padding-bottom: 140px; /* Додаємо місце знизу */
 }
-/* === НОВІ СТИЛІ ДЛЯ POP-UP (MODAL) === */
+/* === НОВІ СТИЛІ ДЛЯ POP-UP (MODAL) [v2 - Повний] === */
 
 /* Фон-оверлей */
 .modal-overlay {
@@ -918,9 +918,9 @@ body.details-page {
     padding: 28px;
     opacity: 0; /* Починаємо з прозорого */
     transition: opacity 0.3s ease;
-    cursor: pointer; /* Можна закрити кліком на фон */
+    cursor: pointer;
 }
-/* Стан "видно" */
+/* Стан "видно" - ОЦЕЙ БЛОК ВСЕ ФІКСИТЬ */
 .modal-overlay:not(.hidden) {
     opacity: 1;
 }
@@ -929,14 +929,13 @@ body.details-page {
 .modal-box {
     position: relative;
     padding: 24px;
-    padding-top: 48px; /* Більше місця зверху для кнопки "Х" */
+    padding-top: 48px; 
     max-width: 600px;
     width: 100%;
-    max-height: 85vh; /* Обмеження висоти */
-    overflow-y: auto; /* Додаємо скрол, якщо контенту забагато */
-    cursor: default; /* Щоб клік на вікно не закривав його */
+    max-height: 85vh; 
+    overflow-y: auto; 
+    cursor: default;
     
-    /* Стили з .card */
     border-radius: var(--radius);
     background: linear-gradient(145deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.4) 100%);
     border: 1px solid rgba(255,255,255,0.18);
@@ -950,7 +949,7 @@ body.details-page {
     right: 14px;
     width: 36px;
     height: 36px;
-    background: rgba(255, 255, 255, 0.4); /* Було var(--frost-30) */
+    background: rgba(255, 255, 255, 0.4);
     border: none;
     border-radius: 50%;
     color: var(--text);
@@ -972,35 +971,30 @@ body.details-page {
 
 /* Стилизація контенту всередині поп-апу */
 .modal-content h3 {
-    font-size: 18px; /* Було 20px */
-    font-weight: 500; /* Було 700 (використовуємо 500, бо він у нас є) */
+    font-size: 18px; 
+    font-weight: 500;
     margin-top: 0;
-    margin-bottom: 10px; /* Було 12px */
+    margin-bottom: 10px;
     color: var(--text);
-    
     display: flex;
     align-items: center;
-    gap: 10px; /* Було 12px */
+    gap: 10px;
 }
-
 .modal-content h3 i {
     color: var(--accent-grad);
-    font-size: 17px; /* Було 18px */
-    width: 20px; /* Було 22px */
+    font-size: 17px;
+    width: 20px;
     text-align: center;
 }
-
 .modal-content p, 
 .modal-content li {
     font-size: 16px;
     line-height: 1.6;
     color: var(--text);
 }
-/* Відступ між секціями */
 .modal-content h3:not(:first-child) {
-    margin-top: 20px; /* Було 24px */
+    margin-top: 20px;
 }
-
 
 /* Спеціальний список для клієнтів */
 .clients-list {
@@ -1021,54 +1015,53 @@ body.details-page {
 }
 @media (min-width: 500px) {
     .clients-list {
-        columns: 2; /* Дві колонки на екранах ширше 500px */
+        columns: 2;
     }
 }
 
-/* Ховаємо контейнер з даними */
+/* Ховаємо контейнер з даними - ОЦЕЙ БЛОК ФІКСИТЬ "ПОП-ДАУН" */
 .modal-data {
-    display: none; /* Ховаємо наш "склад" */
+    display: none; 
 }
 
-/* === ФІКС: Компактні кнопки (як .quiz-option, але не широкі) === */
-
-/* Контейнер: кажемо кнопкам стати по центру */
+/* === ФІКС: Компактні кнопки (stats.html) === */
 .stats-triggers {
     display: flex;
-    flex-wrap: wrap; /* Дозволяємо перенос */
-    justify-content: center; /* Центруємо кнопки */
+    flex-wrap: wrap; 
+    justify-content: center; 
     gap: 18px; 
-    
-    /* Прибираємо стилі сітки .cards */
     grid-template-columns: none; 
 }
-
-/* * Кнопки вже мають клас .quiz-option, 
- * тому ми просто ПЕРЕВИЗНАЧАЄМО їх ширину 
-*/
 .stats-triggers .quiz-option {
-    width: auto; /* <-- ГОЛОВНИЙ ФІКС: прибираємо 100% ширину */
-    flex-grow: 1; /* Дозволяємо рости, але не більше, ніж треба */
-    
-    /* Робимо іконки трохи меншими, ніж в квізі */
+    width: auto; 
+    flex-grow: 1; 
     gap: 12px;
 }
-
 .stats-triggers .quiz-option i {
-    font-size: 20px; /* Менша іконка */
+    font-size: 20px; 
 }
-
 .stats-triggers .quiz-option span {
     font-size: 16px;
-    font-weight: 500; /* НЕ жирний текст */
+    font-weight: 500; 
 }
-/* === СТИЛЬ ДЛЯ КНОПКИ "ПЕРЕГЛЯНУТИ ПРИКЛАД" === */
+
+/* === СТИЛЬ ДЛЯ КНОПКИ "ПЕРЕГЛЯНУТИ ПРИКЛАД" (extras-list.html) === */
 .btn-view-example {
     width: 100%;
     text-align: center;
     justify-content: center;
     padding: 14px;
     font-size: 15px;
+    
+    /* === ФІКС: Робимо кнопку скляною, а не фіолетовою === */
+    background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4));
+    color: var(--text);
+    font-weight: 600;
+}
+.btn-view-example:hover {
+    /* Додаємо ефект при наведенні */
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(40,60,90,0.1);
 }
 .btn-view-example i {
     font-size: 16px;
