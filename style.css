@@ -860,7 +860,12 @@ input[type="range"]::-moz-range-thumb {
     text-align: center;
     color: var(--muted);
     border: 1px dashed #d8dde9;
+    
+    /* === ОСЬ ЦЕЙ ФІКС === */
+    position: relative; /* Вмикаємо z-index */
+    z-index: 2; /* Витягуємо НАД білою карткою (яка z-index: -1) */
 }
+
 
 /* --- "Липка" кнопка --- */
 .sticky-footer {
