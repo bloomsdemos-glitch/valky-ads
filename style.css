@@ -1061,3 +1061,235 @@ body.details-page {
     font-size: 16px;
     font-weight: 500; /* НЕ жирний текст */
 }
+/* === СТИЛЬ ДЛЯ КНОПКИ "ПЕРЕГЛЯНУТИ ПРИКЛАД" === */
+.btn-view-example {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    padding: 14px;
+    font-size: 15px;
+}
+.btn-view-example i {
+    font-size: 16px;
+}
+
+
+/* ==================================================
+  СТИЛІ ДЛЯ ІМІТАЦІЇ TELEGRAM (адаптовані для поп-апу) 
+==================================================
+*/
+
+/* * Ми "обгорнули" всі твої стилі в .modal-content, 
+ * щоб вони працювали ТІЛЬКИ всередині поп-апу
+ * і не ламали весь сайт.
+*/
+
+/* Замість твого 'body' ми стилізуємо фон контейнера */
+.modal-content .telegram-chat-container {
+  background-color: #F0F4F7;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: #000;
+  line-height: 1.4;
+  /* Додаємо заокруглення, щоб було красиво */
+  border-radius: 12px; 
+}
+
+/* Контейнер для всіх повідомлень */
+.modal-content .telegram-chat-container {
+  max-width: 450px;
+  margin: auto;
+}
+
+/* Одне повідомлення */
+.modal-content .chat-message {
+  margin-bottom: 4px;
+}
+
+/* --- БУЛЬБАШКА ПОСТА (iOS) --- */
+.modal-content .telegram-post {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 10px 14px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.08);
+  position: relative;
+  box-sizing: border-box; 
+}
+
+/* Зліплюємо пости */
+.modal-content .reply-post {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.modal-content .poll-post {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* --- ВЕРХ ПОСТА --- */
+.modal-content .post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.modal-content .author-name {
+  color: #007AFF;
+  font-weight: 600;
+}
+
+/* --- КОНТЕНТ --- */
+.modal-content .post-content {
+  font-size: 1em;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+.modal-content .post-content p {
+  margin: 4px 0 10px 0;
+}
+.modal-content .post-content a {
+  color: #007AFF;
+  text-decoration: none;
+  word-break: break-all;
+}
+.modal-content .post-content a:hover {
+  text-decoration: underline;
+}
+
+/* --- СТИЛІ КВІЗА --- */
+.modal-content .poll-question {
+  font-size: 1.05em; 
+  font-weight: 500;
+  margin-bottom: 4px !important;
+}
+.modal-content .poll-subtitle {
+  color: #8E8E93;
+  font-size: 0.9em;
+  margin-top: -4px;
+  margin-bottom: 12px;
+}
+.modal-content .poll-options {
+  margin-bottom: 10px;
+}
+.modal-content .poll-option {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  cursor: pointer;
+  border-bottom: 1px solid #F0F0F0; 
+}
+.modal-content .poll-option:last-child {
+  border-bottom: none;
+}
+.modal-content .poll-check-circle {
+  width: 22px;
+  height: 22px;
+  border: 2px solid #B0B8BF; 
+  border-radius: 50%;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+.modal-content .poll-text {
+  font-size: 1em;
+}
+.modal-content .poll-footer {
+  text-align: center;
+  color: #8E8E93;
+  font-size: 0.9em;
+  margin-top: 8px;
+}
+
+/* --- БЛОК ВІДПОВІДІ --- */
+.modal-content .reply-preview {
+  border-left: 2px solid #007AFF;
+  padding-left: 10px;
+  margin: 8px 0;
+  font-size: 0.9em;
+}
+.modal-content .reply-author {
+  color: #007AFF;
+  font-weight: 600;
+}
+.modal-content .reply-text {
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* --- СПИСОК ТОВАРІВ (OL) --- */
+.modal-content .post-list {
+  padding-left: 20px;
+  margin: 10px 0;
+}
+.modal-content .post-list li {
+  margin-bottom: 12px;
+  padding-left: 4px;
+  line-height: 1.5;
+}
+.modal-content .post-list li br {
+  content: " ";
+  display: block;
+  margin-bottom: 4px;
+}
+.modal-content .item-link {
+  margin: 6px 0 0 0;
+  font-size: 0.95em;
+}
+
+/* --- РЕАКЦІЇ-БУЛЬБАШКИ --- */
+.modal-content .reactions-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+  padding: 0 2px;
+}
+.modal-content .reaction-bubble {
+  background-color: rgba(0, 122, 255, 0.08);
+  border-radius: 15px;
+  padding: 4px 10px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #555;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.modal-content .reaction-bubble:hover {
+  background-color: rgba(0, 122, 255, 0.15);
+}
+
+/* --- ФУТЕР (СТАТИСТИКА) --- */
+.modal-content .post-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 8px;
+  padding-right: 5px;
+}
+.modal-content .stats {
+  font-size: 13px;
+  color: #8E8E93;
+  display: flex;
+  align-items: center;
+}
+.modal-content .stats .views-icon {
+  vertical-align: middle;
+  margin-right: 4px;
+}
+.modal-content .stats .time {
+  margin-left: 8px;
+}
+
+/* --- ФІКС: Прибираємо зайві відступи, які дає наш .modal-content --- */
+.modal-content .telegram-chat-container .post-content p:first-child,
+.modal-content .telegram-chat-container .post-content p:last-child {
+    margin-top: 0;
+    margin-bottom: 0;
+}
