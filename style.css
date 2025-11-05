@@ -133,7 +133,7 @@ body {
     transform: translateX(-50%);
 
     /* 3. Додаємо відступи і форму */
-    padding: 8px 16px;
+    padding: 6px 12px;
     border-radius: 999px; /* Робить його "пігулкою" */
 
     /* 4. Додаємо легкий скляний ефект */
