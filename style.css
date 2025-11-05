@@ -115,19 +115,22 @@ body {
 .title{ margin:0; font-size:16px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--text); }
 .subtitle{ margin:0; font-size:13px; color:var(--muted); }
 .form-hint {
-    font-size: 15px; /* Менший шрифт */
-    font-weight: 500; /* Нормальна жирність */
-    color: var(--muted); /* Сірий, приглушений колір */
-    text-align: center; /* По центру */
-    
-    /* Прибираємо всі стилі заголовка */
-    margin: 0 0 16px 0; /* Невеликий відступ знизу */
-    padding: 0;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--muted);
+    text-align: center;
+    margin: 0 0 16px 0;
+    padding: 4px; /* Додамо трохи "повітря" для блиску */
     background: none;
     box-shadow: none;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
+
+    /* === Магія блиску === */
+    position: relative; /* "Якір" для "зайчика" */
+    overflow: hidden;   /* Обрізаємо те, що вилазить */
 }
+
 
 .cards{
   display:grid;
@@ -390,6 +393,38 @@ a:hover { text-decoration:underline; }
     position: relative;
     z-index: 1;
 }
+
+/* === "Сонячний зайчик" для тексту-підказки === */
+.form-hint::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -75%;
+    width: 50%; /* Ширина "зайчика" */
+    height: 200%;
+
+    /* Сам "зайчик" (світлий, ледь помітний) */
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+
+    transform: rotate(25deg); /* Нахиляємо */
+
+    /* Анімація: раз на 7 секунд, з затримкою */
+    animation: hint-flash 7s ease-in-out infinite;
+    animation-delay: 3s; /* Почнеться не одразу */
+}
+
+/* Анімація руху "зайчика" */
+@keyframes hint-flash {
+  0% { left: -75%; } /* Початок (зліва) */
+  30% { left: 125%; } /* Швидко проходить вправо */
+  100% { left: 125%; } /* Чекає до кінця циклу */
+}
+
 
 /* === ОНОВЛЕНІ СТИЛІ ДЛЯ QUIZ (v3.0 - Виправлено) === */
 
