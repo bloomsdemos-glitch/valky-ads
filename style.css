@@ -677,14 +677,15 @@ input[type="range"]::-moz-range-thumb {
     padding-left: 15px; /* Відступ, щоб текст не прилипав до іконки */
 }
 
-/* Стиль самої іконки */
-.quiz-option i {
+/* Стиль ЛІВОЇ іконки (робимо її чорною) */
+.quiz-option i:first-child {
     font-size: 24px;
-    color: var(--muted);
-    opacity: 0.5;
+    color: var(--text); /* <== ЗМІНЕНО (стала чорною) */
+    opacity: 1; /* <== ЗМІНЕНО (стала непрозорою) */
     transition: all 0.2s ease;
-    flex-shrink: 0; /* Забороняємо іконці стискатись */
+    flex-shrink: 0; 
 }
+
 
 /* Стиль "обраної" іконки */
 .quiz-option.selected i {
@@ -717,12 +718,16 @@ input[type="range"]::-moz-range-thumb {
     align-items: center;
     padding: 18px 22px;
     cursor: pointer;
-    font-weight: 700;
+    font-weight: 500; /* <== ЗМІНЕНО (став нежирним) */
+    color: var(--muted); /* <== ДОДАНО (текст став сірим) */
 }
 .info-header i:first-child {
     font-size: 22px;
-    color: var(--accent-grad);
+    color: var(--muted); /* <== ЗМІНЕНО (іконка стала сірою) */
+    opacity: 0.7; /* <== ДОДАНО (робимо її трохи світлішою) */
     margin-right: 12px;
+}
+
 }
 .info-header span {
     flex-grow: 1;
