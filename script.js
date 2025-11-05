@@ -16,9 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // === 2. Логіка для Акордеону (extras-list.html) ===
+    // === 2. Логіка для Акордеону (ТІЛЬКИ ІНФО-БЛОК) ===
     
-    // --- Інфо-блок ---
+    // --- Інфо-блок ("Шо це взагалі таке?") ---
     const infoToggle = document.getElementById('info-toggle');
     const infoContent = document.getElementById('info-content');
     if (infoToggle && infoContent) {
@@ -31,64 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Сам Акордеон ---
-    const accordions = document.querySelectorAll('.accordion-toggle');
-    const stickyFooter = document.getElementById('sticky-footer');
-    const stickyBtn = document.getElementById('sticky-order-btn');
+    // --- Логіку для .accordion-toggle та .sticky-footer ВИДАЛЕНО ---
 
-    if (accordions.length > 0) { // Запускаємо логіку, тільки якщо акордеон є на сторінці
-        accordions.forEach(button => {
-            button.addEventListener('click', () => {
-                const panel = button.nextElementSibling;
-                const wasOpen = button.classList.contains('open');
-
-                document.querySelectorAll('.accordion-toggle').forEach(btn => {
-                    btn.classList.remove('open');
-                    btn.nextElementSibling.classList.remove('open');
-                });
-                
-                if (!wasOpen) {
-                    button.classList.add('open');
-                    panel.classList.add('open');
-                    panel.classList.remove('hidden');
-
-                    const serviceName = button.querySelector('span').textContent.trim();
-                    stickyBtn.dataset.service = `Нативна реклама: ${serviceName}`;
-                    
-                    if (serviceName === 'ДІАЛОГ У ЧАТІ' || serviceName === 'КРУЖЕЧОК' || serviceName === 'РОЗІГРАШ') {
-                        stickyBtn.classList.add('disabled');
-                        stickyBtn.textContent = 'Замовити (як додаток)';
-                    } else {
-                        stickyBtn.classList.remove('disabled');
-                        stickyBtn.textContent = 'Замовити';
-                    }
-                    
-                    stickyFooter.classList.add('visible');
-                    
-                    setTimeout(() => {
-                        button.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }, 200);
-
-                } else {
-                    stickyFooter.classList.remove('visible');
-                }
-            });
-        });
-    }
-    
-    // --- Логіка для "липкої" кнопки ---
-    if (stickyBtn) {
-        // Ми додали клас .order-btn до липкої кнопки, 
-        // тому нам потрібна лише логіка для 'disabled'
-        stickyBtn.addEventListener('click', () => {
-            if (stickyBtn.classList.contains('disabled')) {
-                alert('Спочатку оберіть основний тип реклами, наприклад, «СТАНДАРТ+». Ця послуга є лише додатковою.');
-                return; // Зупиняємо клік
-            }
-            // Якщо кнопка не 'disabled', то спрацює 
-            // загальний слухач для '.order-btn' (пункт 1)
-        });
-    }
 
     // === 3. Логіка для POP-UP (Modal) (stats.html + extras-list.html) ===
 
@@ -143,13 +87,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- Кнопки для "Переглянути приклад" (extras-list.html) ---
-    const exampleButtons = document.querySelectorAll('.btn-view-example');
-    // (Перевіряємо, чи ми на сторінці extras-list.html)
-    if (exampleButtons.length > 0) { 
-        exampleButtons.forEach(button => {
+    // === ОНОВЛЕНИЙ БЛОК ===
+    // --- Кнопки для ОПИСІВ та ПРИКЛАДІВ (extras-list.html) ---
+    // Знаходить *всі* кнопки з [data-modal-target] на сторінці
+    const modalTriggers = document.querySelectorAll('[data-modal-target]');
+    
+    // (Перевіряємо, чи ми на сторінці, де є такі кнопки)
+    if (modalTriggers.length > 0) { 
+        modalTriggers.forEach(button => {
             button.addEventListener('click', (e) => {
-                e.stopPropagation(); // Не даємо акордеону закритись
+                // e.stopPropagation(); // Більше не потрібно, акордеон видалено
                 
                 const targetId = button.dataset.modalTarget;
                 const contentHtml = document.getElementById(targetId)?.innerHTML;
