@@ -899,7 +899,7 @@ input[type="range"]::-moz-range-thumb {
 body.details-page {
     padding-bottom: 140px; /* Додаємо місце знизу */
 }
-/* === НОВІ СТИЛІ ДЛЯ POP-UP (MODAL) [v2 - Повний] === */
+/* === НОВІ СТИЛІ ДЛЯ POP-UP (MODAL) [v3 - ФІНАЛЬНИЙ] === */
 
 /* Фон-оверлей */
 .modal-overlay {
@@ -908,7 +908,7 @@ body.details-page {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(255, 255, 255, 0.1); /* Легкий білий фон */
+    background: rgba(255, 255, 255, 0.1); 
     backdrop-filter: blur(16px) saturate(120%);
     -webkit-backdrop-filter: blur(16px) saturate(120%);
     z-index: 1000;
@@ -1059,13 +1059,17 @@ body.details-page {
     font-weight: 600;
 }
 .btn-view-example:hover {
-    /* Додаємо ефект при наведенні */
     transform: translateY(-4px);
     box-shadow: 0 12px 24px rgba(40,60,90,0.1);
 }
 .btn-view-example i {
     font-size: 16px;
 }
+
+/* === СТИЛІ ДЛЯ ІМІТАЦІЇ TELEGRAM === */
+/* ... (і тут мають бути твої стилі для .modal-content .telegram-chat-container) ... */
+
+
 
 
 /* ==================================================
