@@ -1230,24 +1230,10 @@ input[type="range"]::-moz-range-thumb {
     margin-bottom: 0;
 }
 
-
-/* Іконка "інфо" на кнопках послуг (замість стрілки) */
-.modal-info-icon {
-    font-size: 18px;
-    color: var(--muted);
-    margin-left: auto; /* Відправляє іконку вправо */
-    opacity: 0.7;
-    transition: opacity 0.2s ease;
-}
-
-/* Маленький ефект при наведенні на кнопку */
-.quiz-option:hover .modal-info-icon {
-    opacity: 1;
-}
 /* === СТИЛЬ ДЛЯ ЗАГОЛОВКА ПОСЛУГИ В ПОП-АПІ === */
 .modal-service-title {
     font-size: 18px; /* <== Не величезний */
-    font-weight: 700;
+    font-weight: 800;
     color: var(--text);
     text-align: center; /* <== По центру */
     text-transform: uppercase; /* <== Робить його "охайним" */
