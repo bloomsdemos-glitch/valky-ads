@@ -797,7 +797,7 @@ input[type="range"]::-moz-range-thumb {
     /* --- Магія анімації (GRID) --- */
     display: grid;
     grid-template-rows: 0fr; /* Стан: Закрито */
-    transition: grid-template-rows 0.3s ease-out, margin-top 0.3s ease-out; padding 0.3s ease-out;
+    transition: grid-template-rows 0.3s ease-out, margin-top 0.3s ease-out, padding 0.3s ease-out;
     
     /* Властивості зі старого блоку */
     overflow: hidden;
