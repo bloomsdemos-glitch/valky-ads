@@ -727,6 +727,8 @@ input[type="range"]::-moz-range-thumb {
     display: grid;
     grid-template-rows: 0fr; /* Стан: Закрито */
     overflow: hidden;
+    
+    /* ВИПРАВЛЕНИЙ РЯДОК: */
     transition: grid-template-rows 0.3s ease-out, padding 0.3s ease-out;
     
     /* Відступи коли закрито */
@@ -737,7 +739,7 @@ input[type="range"]::-moz-range-thumb {
 .info-content > p {
     /* Це наш вміст, який ми ховаємо/показуємо */
     min-height: 0;
-    overflow: hidden;
+    /* overflow: hidden; -- ВИДАЛЕНО, ЦЕ ВАЖЛИВО */
     visibility: hidden;
     opacity: 0;
     transition: opacity 0.1s ease-out, visibility 0.1s ease-out;
@@ -757,37 +759,6 @@ input[type="range"]::-moz-range-thumb {
 }
 
 
-/* --- Акордеон --- */
-.accordion-item {
-    /* Контейнер, щоб панель була прив'язана до кнопки */
-}
-.accordion-toggle i:first-child {
-    width: 28px; /* Вирівнюємо іконки послуг */
-    text-align: center;
-}
-.accordion-arrow {
-    font-size: 16px;
-    color: var(--muted);
-    transition: transform 0.3s ease;
-    margin-left: auto; /* Відправляємо стрілку вправо */
-}
-
-/* Робимо "злиття" кнопки і панелі */
-.accordion-toggle.open {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    
-    /* === ОНОВЛЕНА ТІНЬ === */
-    box-shadow:
-        inset 0 1px 1px rgba(255,255,255,0.22), /* Внутрішня тінь (залишаємо) */
-        var(--soft-shadow-2), /* Обводка (залишаємо) */
-        0 4px 12px rgba(40, 60, 90, 0.15); /* НОВА, м'яка тінь ВНИЗ */
-}
-
-
-.accordion-toggle.open .accordion-arrow {
-    transform: rotate(180deg);
-}
 
 .accordion-panel {
     background: #fff;
@@ -797,6 +768,8 @@ input[type="range"]::-moz-range-thumb {
     /* --- Магія анімації (GRID) --- */
     display: grid;
     grid-template-rows: 0fr; /* Стан: Закрито */
+    
+    /* ВИПРАВЛЕНИЙ РЯДОК (з КОМОЮ, а не ';'): */
     transition: grid-template-rows 0.3s ease-out, margin-top 0.3s ease-out, padding 0.3s ease-out;
     
     /* Властивості зі старого блоку */
@@ -811,6 +784,7 @@ input[type="range"]::-moz-range-thumb {
 /* Це ховає/показує ВЕСЬ вміст панелі */
 .accordion-panel > * {
     min-height: 0;
+    /* overflow: hidden; -- ВИДАЛЕНО, ЦЕ ВАЖЛИВО */
     visibility: hidden;
     opacity: 0;
     transition: opacity 0.1s ease-out, visibility 0.1s ease-out;
@@ -834,8 +808,6 @@ input[type="range"]::-moz-range-thumb {
     opacity: 1;
     transition: opacity 0.2s ease-in 0.15s, visibility 0.2s ease-in 0.15s;
 }
-
-
 
 .price-tag {
     font-size: 18px;
