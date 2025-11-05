@@ -34,113 +34,37 @@
 
             <p class="form-hint">Натисніть на назву варіанту:</p>
 
-            <div class="accordion-item">
-                <button class="accordion-toggle quiz-option">
-                    <i class="fa-solid fa-square-poll-vertical"></i>
-                    <span>ІНТЕРАКТИВ</span>
-                    <i class="fa-solid fa-chevron-down accordion-arrow"></i>
-                </button>
-                <div class="accordion-panel hidden">
-                    <div class="price-tag">🏷️ 100 ГРН <span class="price-alt">або донат від 70 грн</span></div>
-                    <p>Ми створюємо і публікуємо опитування або вікторину, яка пов’язана з вашим товаром чи послугою.</p>
-                    <p><b>Що входить:</b></p>
-                    <ul class="features-list">
-                        <li><i class="fa-solid fa-comments"></i>Рекламний пост в коментарях до опитування</li>
-                        <li><i class="fa-solid fa-paper-plane"></i>Окремий рекламний пост в каналі</li>
-                        <li><i class="fa-solid fa-thumbtack"></i>Закріплення рекламного посту на 24 години</li>
-                        <li><i class="fa-solid fa-clock"></i>Ви самостійно обираєте час публікації</li>
-                    </ul>
-                    <div class="example-placeholder">
-                        <button class="btn btn-view-example" data-modal-target="example-interactive">
-                            <i class="fa-solid fa-eye"></i>
-                            <span>Переглянути приклад</span>
-                        </button>
-                    </div>
+            <button class="quiz-option" data-modal-target="modal-interactive">
+                <i class="fa-solid fa-square-poll-vertical"></i>
+                <span>ІНТЕРАКТИВ</span>
+                <i class="fa-solid fa-circle-info modal-info-icon"></i>
+            </button>
 
-                </div>
-            </div>
+            <button class="quiz-option" data-modal-target="modal-infopost">
+                <i class="fa-solid fa-newspaper"></i>
+                <span>ІНФО-ПОСТ</span>
+                <i class="fa-solid fa-circle-info modal-info-icon"></i>
+            </button>
 
-            <div class="accordion-item">
-                <button class="accordion-toggle quiz-option">
-                    <i class="fa-solid fa-newspaper"></i>
-                    <span>ІНФО-ПОСТ</span>
-                    <i class="fa-solid fa-chevron-down accordion-arrow"></i>
-                </button>
-                <div class="accordion-panel hidden">
-                    <div class="price-tag">🏷️ 200 ГРН <span class="price-alt">або донат від 100 грн</span></div>
-                    <p>Ми створюємо текст, що імітує звичайний пост-новину, а наприкінці додаємо вашу рекламу. Це також може бути корисний текст про ваш товар/послугу.</p>
-                    <p><b>Що входить:</b></p>
-                    <ul class="features-list">
-                        <li><i class="fa-solid fa-thumbtack"></i>Закріплення посту на 24 години</li>
-                        <li><i class="fa-solid fa-share"></i>Репост у чат «Валківський Чатик»</li>
-                        <li><i class="fa-solid fa-clock"></i>Ви самостійно обираєте час публікації</li>
-                    </ul>
-                    <div class="example-placeholder">
-                        <button class="btn btn-view-example" data-modal-target="example-infopost">
-                            <i class="fa-solid fa-eye"></i>
-                            <span>Переглянути приклад</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
+            <button class="quiz-option" data-modal-target="modal-dialog">
+                <i class="fa-solid fa-comments"></i>
+                <span>ДІАЛОГ У ЧАТІ</span>
+                <i class="fa-solid fa-circle-info modal-info-icon"></i>
+            </button>
 
-            <div class="accordion-item">
-                <button class="accordion-toggle quiz-option">
-                    <i class="fa-solid fa-comments"></i>
-                    <span>ДІАЛОГ У ЧАТІ</span>
-                    <i class="fa-solid fa-chevron-down accordion-arrow"></i>
-                </button>
-                <div class="accordion-panel hidden">
-                    <div class="price-tag">🏷️ 100 ГРН</div>
-                    <p class="warning-text"><i class="fa-solid fa-circle-exclamation"></i><b>Додаткова послуга.</b> Доступна тільки при замовленні основного типу реклами (напр. «СТАНДАРТ+»)</p>
-                    <p>Ви відправляєте рекламу в чат, а ми у відповідь ставимо заздалегідь узгоджені питання (про ціни, асортимент і т.д.), створюючи інформативний діалог.</p>
-                    <p><b>Що входить:</b></p>
-                    <ul class="features-list">
-                        <li><i class="fa-solid fa-file-signature"></i>Працюємо над сценарієм, узгоджуючи всі деталі</li>
-                        <li><i class="fa-solid fa-clock"></i>Ви самостійно обираєте час публікації</li>
-                    </ul>
-                    <div class="example-placeholder">
-                        <button class="btn btn-view-example" data-modal-target="example-dialog">
-                            <i class="fa-solid fa-eye"></i>
-                            <span>Переглянути приклад</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
+            <button class="quiz-option" data-modal-target="modal-videocircle">
+                <i class="fa-solid fa-circle-play"></i>
+                <span>КРУЖЕЧОК</span>
+                <i class="fa-solid fa-circle-info modal-info-icon"></i>
+            </button>
 
-            <div class="accordion-item">
-                <button class="accordion-toggle quiz-option">
-                    <i class="fa-solid fa-circle-play"></i>
-                    <span>КРУЖЕЧОК</span>
-                    <i class="fa-solid fa-chevron-down accordion-arrow"></i>
-                </button>
-                <div class="accordion-panel hidden">
-                    <div class="price-tag">🏷️ 100 ГРН</div>
-                    <p class="warning-text"><i class="fa-solid fa-circle-exclamation"></i><b>Додаткова послуга.</b> Доступна тільки при замовленні основного типу реклами.</p>
-                    <p>Ми створюємо рекламне відео у форматі "кружечка" для Telegram.</p>
-                    <div class="example-placeholder">
-                        <p><i class="muted">Наразі недоступно</i></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="accordion-item">
-                <button class="accordion-toggle quiz-option">
-                    <i class="fa-solid fa-gift"></i>
-                    <span>РОЗІГРАШ</span>
-                    <i class="fa-solid fa-chevron-down accordion-arrow"></i>
-                </button>
-                <div class="accordion-panel hidden">
-                    <p class="warning-text"><i class="fa-solid fa-circle-exclamation"></i><b>Додаткова послуга.</b> Доступна тільки при замовленні основного типу реклами.</p>
-                    <p>Організація та супровід розіграшу "під ключ".</p>
-                    </div>
-            </div>
+            <button class="quiz-option" data-modal-target="modal-giveaway">
+                <i class="fa-solid fa-gift"></i>
+                <span>РОЗІГРАШ</span>
+                <i class="fa-solid fa-circle-info modal-info-icon"></i>
+            </button>
 
         </main>
-    </div>
-
-    <div class="sticky-footer hidden" id="sticky-footer">
-        <button class="btn primary order-btn" id="sticky-order-btn" data-service="">Замовити</button>
     </div>
 
     <div class="modal-overlay hidden" id="modal-overlay">
@@ -158,15 +82,79 @@
         <div id="example-interactive">
             <p>Завантажуємо приклад...</p> 
         </div>
-
         <div id="example-infopost">
             <p>Завантажуємо приклад...</p>
         </div>
-
         <div id="example-dialog">
             <p>Завантажуємо приклад...</p>
         </div>
         
+        <div id="modal-interactive">
+            <div class="price-tag">🏷️ 100 ГРН <span class="price-alt">або донат від 70 грн</span></div>
+            <p>Ми створюємо і публікуємо опитування або вікторину, яка пов’язана з вашим товаром чи послугою.</p>
+            <p><b>Що входить:</b></p>
+            <ul class="features-list">
+                <li><i class="fa-solid fa-comments"></i>Рекламний пост в коментарях до опитування</li>
+                <li><i class="fa-solid fa-paper-plane"></i>Окремий рекламний пост в каналі</li>
+                <li><i class="fa-solid fa-thumbtack"></i>Закріплення рекламного посту на 24 години</li>
+                <li><i class="fa-solid fa-clock"></i>Ви самостійно обираєте час публікації</li>
+            </ul>
+            <div class="example-placeholder">
+                <button class="btn btn-view-example" data-modal-target="example-interactive">
+                    <i class="fa-solid fa-eye"></i>
+                    <span>Переглянути приклад</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="modal-infopost">
+            <div class="price-tag">🏷️ 200 ГРН <span class="price-alt">або донат від 100 грн</span></div>
+            <p>Ми створюємо текст, що імітує звичайний пост-новину, а наприкінці додаємо вашу рекламу. Це також може бути корисний текст про ваш товар/послугу.</p>
+            <p><b>Що входить:</b></p>
+            <ul class="features-list">
+                <li><i class="fa-solid fa-thumbtack"></i>Закріплення посту на 24 години</li>
+                <li><i class="fa-solid fa-share"></i>Репост у чат «Валківський Чатик»</li>
+                <li><i class="fa-solid fa-clock"></i>Ви самостійно обираєте час публікації</li>
+            </ul>
+            <div class="example-placeholder">
+                <button class="btn btn-view-example" data-modal-target="example-infopost">
+                    <i class="fa-solid fa-eye"></i>
+                    <span>Переглянути приклад</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="modal-dialog">
+            <div class="price-tag">🏷️ 100 ГРН</div>
+            <p class="warning-text"><i class="fa-solid fa-circle-exclamation"></i><b>Додаткова послуга.</b> Доступна тільки при замовленні основного типу реклами (напр. «СТАНДАРТ+»)</p>
+            <p>Ви відправляєте рекламу в чат, а ми у відповідь ставимо заздалегідь узгоджені питання (про ціни, асортимент і т.д.), створюючи інформативний діалог.</p>
+            <p><b>Що входить:</b></p>
+            <ul class="features-list">
+                <li><i class="fa-solid fa-file-signature"></i>Працюємо над сценарієм, узгоджуючи всі деталі</li>
+                <li><i class="fa-solid fa-clock"></i>Ви самостійно обираєте час публікації</li>
+            </ul>
+            <div class="example-placeholder">
+                <button class="btn btn-view-example" data-modal-target="example-dialog">
+                    <i class="fa-solid fa-eye"></i>
+                    <span>Переглянути приклад</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="modal-videocircle">
+            <div class="price-tag">🏷️ 100 ГРН</div>
+            <p class="warning-text"><i class="fa-solid fa-circle-exclamation"></i><b>Додаткова послуга.</b> Доступна тільки при замовленні основного типу реклами.</p>
+            <p>Ми створюємо рекламне відео у форматі "кружечка" для Telegram.</p>
+            <div class="example-placeholder">
+                <p><i class="muted">Наразі недоступно</i></p>
+            </div>
+        </div>
+
+        <div id="modal-giveaway">
+            <p class="warning-text"><i class="fa-solid fa-circle-exclamation"></i><b>Додаткова послуга.</b> Доступна тільки при замовленні основного типу реклами.</p>
+            <p>Організація та супровід розіграшу "під ключ".</p>
+        </div>
+
     </div>
     <script src="script.js"></script>
 </body>
