@@ -1233,7 +1233,7 @@ input[type="range"]::-moz-range-thumb {
 /* === СТИЛЬ ДЛЯ ЗАГОЛОВКА ПОСЛУГИ В ПОП-АПІ === */
 .modal-service-title {
     font-size: 18px; /* <== Не величезний */
-    font-weight: 800;
+    font-weight: 900;
     color: var(--text);
     text-align: center; /* <== По центру */
     text-transform: uppercase; /* <== Робить його "охайним" */
