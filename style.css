@@ -761,6 +761,10 @@ input[type="range"]::-moz-range-thumb {
     background: #fff;
     border-radius: 0 0 var(--radius) var(--radius);
     position: relative;
+
+    /* === ДОДАЙ ЦІ ДВА РЯДКИ === */
+    margin-left: 22px;
+    margin-right: 22px;
     
     /* --- ПОВЕРТАЄМО НАДІЙНИЙ max-height --- */
     max-height: 0; 
