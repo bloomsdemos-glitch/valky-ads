@@ -96,8 +96,16 @@ descButtons.forEach(button => {
         const targetId = button.dataset.modalTarget;
         const contentHtml = document.getElementById(targetId)?.innerHTML;
 
+        // === МАГІЯ ПОЧИНАЄТЬСЯ ===
+        // 1. Беремо текст (назву) з самої кнопки
+        const titleText = button.querySelector('span').textContent.trim();
+        // 2. Створюємо для нього красивий HTML-заголовок
+        const titleHtml = `<h3 class="modal-service-title">${titleText}</h3>`;
+        // === МАГІЯ КІНЕЦЬ ===
+        
         if (contentHtml) {
-            openModal(contentHtml); // Ця функція відкриває поп-ап з нуля
+            // 3. З'єднуємо заголовок + контент і ВІДПРАВЛЯЄМО в поп-ап
+            openModal(titleHtml + contentHtml); // <== ЗМІНЕНО
         } else {
             console.error('Не знайдено контент для модального вікна: ' + targetId);
         }
