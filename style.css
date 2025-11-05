@@ -1244,3 +1244,19 @@ input[type="range"]::-moz-range-thumb {
 .quiz-option:hover .modal-info-icon {
     opacity: 1;
 }
+/* === СТИЛЬ ДЛЯ ЗАГОЛОВКА ПОСЛУГИ В ПОП-АПІ === */
+.modal-service-title {
+    font-size: 18px; /* <== Не величезний */
+    font-weight: 700;
+    color: var(--text);
+    text-align: center; /* <== По центру */
+    text-transform: uppercase; /* <== Робить його "охайним" */
+    letter-spacing: 0.5px;
+
+    margin-top: 0; /* <== Зверху */
+    margin-bottom: 20px; /* <== Відступ до тексту опису */
+
+    /* Акуратна лінія-розділювач */
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+}
