@@ -87,27 +87,48 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // === ОНОВЛЕНИЙ БЛОК ===
-    // --- Кнопки для ОПИСІВ та ПРИКЛАДІВ (extras-list.html) ---
-    // Знаходить *всі* кнопки з [data-modal-target] на сторінці
-    const modalTriggers = document.querySelectorAll('[data-modal-target]');
-    
-    // (Перевіряємо, чи ми на сторінці, де є такі кнопки)
-    if (modalTriggers.length > 0) { 
-        modalTriggers.forEach(button => {
-            button.addEventListener('click', (e) => {
-                // e.stopPropagation(); // Більше не потрібно, акордеон видалено
-                
-                const targetId = button.dataset.modalTarget;
-                const contentHtml = document.getElementById(targetId)?.innerHTML;
-                
-                if (contentHtml) {
-                    openModal(contentHtml); 
-                } else {
-                    console.error('Не знайдено контент для модального вікна: ' + targetId);
-                }
-            });
-        });
-    }
+// === ОНОВЛЕНИЙ БЛОК (v2 - з фіксом "поп-ап в поп-апі") ===
+
+// 1. Слухач для кнопок ОПИСУ (ті, що на головній сторінці)
+const descButtons = document.querySelectorAll('.quiz-option[data-modal-target]');
+descButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const targetId = button.dataset.modalTarget;
+        const contentHtml = document.getElementById(targetId)?.innerHTML;
+
+        if (contentHtml) {
+            openModal(contentHtml); // Ця функція відкриває поп-ап з нуля
+        } else {
+            console.error('Не знайдено контент для модального вікна: ' + targetId);
+        }
+    });
+});
+
+// 2. Слухач для кнопок ПРИКЛАДУ (ті, що ВЖЕ всередині поп-апу)
+// Ми не можемо повісити 'click' на кнопки, яких ще немає в HTML.
+// Замість цього, ми вішаємо ОДИН слухач на .modal-content, який ВЖЕ існує.
+if (modalContent) {
+    modalContent.addEventListener('click', (e) => {
+        // Перевіряємо, чи був клік *саме* по кнопці "Переглянути приклад"
+        const exampleButton = e.target.closest('.btn-view-example[data-modal-target]');
+
+        if (exampleButton) {
+            e.stopPropagation(); // Важливо! Щоб клік не "сплив" до .modal-overlay
+
+            const targetId = exampleButton.dataset.modalTarget;
+            const contentHtml = document.getElementById(targetId)?.innerHTML;
+
+            if (contentHtml) {
+                // Ми НЕ викликаємо openModal(). 
+                // Ми просто ЗАМІНЮЄМО вміст ВЖЕ відкритого вікна.
+                modalContent.innerHTML = contentHtml;
+                // Прокручуємо новий вміст нагору
+                modalContent.scrollTop = 0; 
+            } else {
+                console.error('Не знайдено контент для "Прикладу": ' + targetId);
+            }
+        }
+    });
+}
 
 }); // <-- КІНЕЦЬ ГОЛОВНОГО СЛУХАЧА DOMContentLoaded
