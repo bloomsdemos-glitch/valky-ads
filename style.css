@@ -859,7 +859,7 @@ input[type="range"]::-moz-range-thumb {
     text-align: center;
     color: var(--muted);
     border: 1px dashed #d8dde9;
-    
+}
     
 
 /* --- "Липка" кнопка --- */
