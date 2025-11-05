@@ -719,44 +719,41 @@ input[type="range"]::-moz-range-thumb {
     transform: rotate(180deg);
 }
 .info-content {
+    padding: 0 22px 20px 22px; 
     color: var(--muted);
     font-size: 15px;
     line-height: 1.6;
 
-    /* === НОВА АНІМАЦІЯ (GRID) === */
-    display: grid;
-    grid-template-rows: 0fr; /* Стан: Закрито */
+    /* === ПОВЕРТАЄМО НАДІЙНИЙ max-height === */
+    max-height: 0;
     overflow: hidden;
-    
-    /* ВИПРАВЛЕНИЙ РЯДОК: */
-    transition: grid-template-rows 0.3s ease-out, padding 0.3s ease-out;
-    
-    /* Відступи коли закрито */
-    padding: 0 22px;
+    padding-top: 0;
+    padding-bottom: 0;
     margin: 0;
+    
+    /* АНІМАЦІЯ (трохи швидша) */
+    transition: max-height 0.35s ease-out; 
 }
-
-.info-content > p {
-    /* Це наш вміст, який ми ховаємо/показуємо */
-    min-height: 0;
-    /* overflow: hidden; -- ВИДАЛЕНО, ЦЕ ВАЖЛИВО */
-    visibility: hidden;
+.info-content p {
+     /* Плавна поява/зникнення ВМІСТУ */
     opacity: 0;
-    transition: opacity 0.1s ease-out, visibility 0.1s ease-out;
+    visibility: hidden;
+    transition: opacity 0.2s ease-out, visibility 0.2s ease-out;
 }
 
-/* НОВИЙ СТАН "ВІДКРИТО" */
+/* СТАН "ВІДКРИТО" */
 .info-content.open {
-    grid-template-rows: 1fr; /* Стан: Відкрито (до авто-висоти) */
-    padding: 0 22px 20px 22px; /* Повертаємо відступи */
+    max-height: 500px; /* Адекватна висота, не 1000 */
+    padding-top: 0; 
+    padding-bottom: 20px; 
+}
+.info-content.open p {
+     /* ВМІСТ З'ЯВЛЯЄТЬСЯ */
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0.1s; /* З'являється трохи ПІСЛЯ відкриття */
 }
 
-.info-content.open > p {
-    visibility: visible;
-    opacity: 1;
-    /* Плавна поява тексту ПІСЛЯ відкриття */
-    transition: opacity 0.2s ease-in 0.15s, visibility 0.2s ease-in 0.15s;
-}
 
 
 
@@ -765,37 +762,32 @@ input[type="range"]::-moz-range-thumb {
     border-radius: 0 0 var(--radius) var(--radius);
     position: relative;
     
-    /* --- Магія анімації (GRID) --- */
-    display: grid;
-    grid-template-rows: 0fr; /* Стан: Закрито */
-    
-    /* ВИПРАВЛЕНИЙ РЯДОК (з КОМОЮ, а не ';'): */
-    transition: grid-template-rows 0.3s ease-out, margin-top 0.3s ease-out, padding 0.3s ease-out;
-    
-    /* Властивості зі старого блоку */
-    overflow: hidden;
+    /* --- ПОВЕРТАЄМО НАДІЙНИЙ max-height --- */
+    max-height: 0; 
+    overflow: hidden; 
     padding-top: 0;
     padding-bottom: 0;
     margin-top: 0;
     border: none;
     box-shadow: none;
+    
+    /* АНІМАЦІЯ (трохи швидша) */
+    transition: max-height 0.35s ease-out, margin-top 0.35s ease-out, padding 0.35s ease-out;
 }
 
 /* Це ховає/показує ВЕСЬ вміст панелі */
 .accordion-panel > * {
-    min-height: 0;
-    /* overflow: hidden; -- ВИДАЛЕНО, ЦЕ ВАЖЛИВО */
-    visibility: hidden;
+    /* Плавна поява/зникнення ВМІСТУ */
     opacity: 0;
-    transition: opacity 0.1s ease-out, visibility 0.1s ease-out;
+    visibility: hidden;
+    transition: opacity 0.2s ease-out, visibility 0.2s ease-out;
 }
 
 
 /* Стан "ВІДКРИТО" */
 .accordion-panel.open {
-    grid-template-rows: 1fr; /* Стан: Відкрито (до авто-висоти) */
+    max-height: 1000px; /* Тут можна лишити 1000 */
     
-    /* Повертаємо стилі зі старого блоку */
     padding: 20px 22px;
     margin-top: -18px; /* Нахльост */
     border: 1px solid #fff;
@@ -804,10 +796,12 @@ input[type="range"]::-moz-range-thumb {
 
 /* Плавна поява вмісту ПІСЛЯ відкриття */
 .accordion-panel.open > * {
-    visibility: visible;
+    /* ВМІСТ З'ЯВЛЯЄТЬСЯ */
     opacity: 1;
-    transition: opacity 0.2s ease-in 0.15s, visibility 0.2s ease-in 0.15s;
+    visibility: visible;
+    transition-delay: 0.1s; /* З'являється трохи ПІСЛЯ відкриття */
 }
+
 
 .price-tag {
     font-size: 18px;
