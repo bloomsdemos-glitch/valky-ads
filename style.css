@@ -1287,3 +1287,17 @@ body.details-page {
     margin-top: 0;
     margin-bottom: 0;
 }
+
+/* === ФІКС ІКОНОК АКОРДЕОНУ (щоб не прилипали) === */
+
+.accordion-toggle span {
+    flex-grow: 1; /* Змушує текст "розштовхати" іконку */
+}
+
+.accordion-arrow {
+    font-size: 16px;
+    color: var(--muted);
+    transition: transform 0.3s ease;
+    margin-left: auto; /* Змушує іконку "втікти" вправо */
+}
+
