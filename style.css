@@ -1254,3 +1254,75 @@ input[type="range"]::-moz-range-thumb {
     padding-bottom: 12px;
     border-bottom: 1px solid rgba(0,0,0,0.08);
 }
+/* === СТИЛІ ДЛЯ ІНФО-ПОСТА (з картинкою) === */
+
+/* Модифікація padding для поста з картинкою */
+.modal-content .info-post-style {
+  padding: 10px 14px 0 14px; 
+}
+
+/* Новий стиль для картинки в шапці */
+.modal-content .info-post-style .post-image {
+  width: calc(100% + 28px); /* Розтягує на всю ширину (14px + 14px) */
+  margin: -10px -14px 10px -14px; /* Прибирає відступи зверху і з боків */
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  max-height: 300px;
+  object-fit: cover;
+}
+
+/* Модифікація для контенту */
+.modal-content .info-post-style .post-content {
+  padding-bottom: 10px; 
+}
+
+.modal-content .info-post-style .post-content p br {
+  content: " ";
+  display: block;
+  margin-bottom: 3px;
+}
+
+/* Стиль для списку товарів (ul) */
+.modal-content .info-post-style .post-content ul {
+  padding-left: 20px;
+  margin: 10px 0;
+}
+.modal-content .info-post-style .post-content li {
+  margin-bottom: 8px;
+}
+
+/* Модифікація відступів для реакцій/футера */
+.modal-content .info-post-style .reactions-container {
+  padding-bottom: 10px;
+}
+.modal-content .info-post-style .post-footer {
+  margin-bottom: 10px; 
+}
+
+/* ==== Нові стилі для кнопки "КОМЕНТУВАТИ" ==== */
+.modal-content .info-post-style .comment-button-container {
+  border-top: 1px solid #EFEFEF;
+  margin: 0 -14px; /* Розтягує лінію на всю ширину */
+}
+.modal-content .info-post-style .comment-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  text-decoration: none;
+  color: #8E8E93;
+  font-weight: 500;
+  font-size: 0.95em;
+  transition: background-color 0.2s;
+}
+.modal-content .info-post-style .comment-button:hover {
+  background-color: #F8F8F8;
+}
+.modal-content .info-post-style .comment-button span {
+  flex-grow: 1;
+  margin-left: 10px;
+}
+.modal-content .info-post-style .comment-button svg {
+  stroke: #8E8E93;
+  flex-shrink: 0;
+}
