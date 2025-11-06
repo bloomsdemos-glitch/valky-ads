@@ -792,15 +792,20 @@ input[type="range"]::-moz-range-thumb {
     margin-left: 8px;
 }
 .warning-text {
-    background-color: #fff8e1; /* Жовтий фон-попередження */
-    color: #6d5f00;
-    padding: 12px 16px;
+    background-color: #f4f6f9; /* <== ЗМІНЕНО (став сірим) */
+    color: var(--muted); /* <== ЗМІНЕНО (став сірим) */
+    padding: 10px 14px; /* <== ЗМІНЕНО (трохи менше) */
     border-radius: 12px;
     font-size: 14px;
     margin-bottom: 15px;
 }
 .warning-text i {
     margin-right: 8px;
+    opacity: 0.7; /* <== ДОДАНО (іконка теж "тихіша") */
+}
+/* ДОДАЙ ЦЕЙ НОВИЙ БЛОК (прибирає жирність з "Додаткова послуга") */
+.warning-text b {
+    font-weight: 500; /* <== робить текст нежирним */
 }
 
 .features-list {
