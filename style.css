@@ -825,13 +825,12 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .example-placeholder {
-    background: #f4f6f9;
-    border-radius: 12px;
-    padding: 20px;
-    text-align: center;
-    color: var(--muted);
-    border: 1px dashed #d8dde9;
+    text-align: center; /* <== Лишаємо тільки це */
+    margin-top: 15px; /* <== Додамо відступ зверху */
+    
+    /* Все інше (фон, рамки, padding) - видалено */
 }
+
     
 
 
@@ -1232,17 +1231,20 @@ input[type="range"]::-moz-range-thumb {
 
 /* === СТИЛЬ ДЛЯ ЗАГОЛОВКА ПОСЛУГИ В ПОП-АПІ === */
 .modal-service-title {
-    font-size: 18px; /* <== Не величезний */
-    font-weight: 900;
+    display: block; /* Гарантує, що це блочний елемент */
+    width: 100%;    /* Гарантує, що він на всю ширину */
+
+    font-size: 18px; 
+    font-weight: 800; /* <== ЗРОБЛЕНО ЖИРНІШИМ */
     color: var(--text);
-    text-align: center; /* <== По центру */
-    text-transform: uppercase; /* <== Робить його "охайним" */
+
+    text-align: center; /* <== ПОСТАВЛЕНО В ЦЕНТР */
+    text-transform: uppercase;
     letter-spacing: 0.5px;
 
-    margin-top: 0; /* <== Зверху */
-    margin-bottom: 20px; /* <== Відступ до тексту опису */
+    margin-top: 0; 
+    margin-bottom: 20px; 
 
-    /* Акуратна лінія-розділювач */
     padding-bottom: 12px;
     border-bottom: 1px solid rgba(0,0,0,0.08);
 }
