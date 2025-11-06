@@ -792,13 +792,14 @@ input[type="range"]::-moz-range-thumb {
     margin-left: 8px;
 }
 .warning-text {
-    background-color: #f4f6f9; /* <== ЗМІНЕНО (став сірим) */
-    color: var(--muted); /* <== ЗМІНЕНО (став сірим) */
-    padding: 10px 14px; /* <== ЗМІНЕНО (трохи менше) */
+    background-color: #f4f6f9; 
+    color: var(--muted); 
+    padding: 8px 12px; /* <== ЗМІНЕНО (став ще меншим) */
     border-radius: 12px;
-    font-size: 14px;
+    font-size: 13px; /* <== ЗМІНЕНО (став дрібнішим) */
     margin-bottom: 15px;
 }
+
 .warning-text i {
     margin-right: 8px;
     opacity: 0.7; /* <== ДОДАНО (іконка теж "тихіша") */
@@ -1235,21 +1236,21 @@ input[type="range"]::-moz-range-thumb {
 }
 
 /* === СТИЛЬ ДЛЯ ЗАГОЛОВКА ПОСЛУГИ В ПОП-АПІ === */
-.modal-service-title {
-    display: block; /* Гарантує, що це блочний елемент */
-    width: 100%;    /* Гарантує, що він на всю ширину */
-
+.modal-content .modal-service-title {
+    display: block; 
+    width: 100%;    
+    
     font-size: 18px; 
-    font-weight: 800; /* <== ЗРОБЛЕНО ЖИРНІШИМ */
+    font-weight: 800; /* <== Жирність */
     color: var(--text);
-
-    text-align: center; /* <== ПОСТАВЛЕНО В ЦЕНТР */
+    
+    text-align: center; /* <== Центрування */
     text-transform: uppercase;
     letter-spacing: 0.5px;
-
+    
     margin-top: 0; 
     margin-bottom: 20px; 
-
+    
     padding-bottom: 12px;
     border-bottom: 1px solid rgba(0,0,0,0.08);
 }
