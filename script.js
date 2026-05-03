@@ -1,5 +1,5 @@
 // Це твій нікнейм в телеграмі без @. Заміни на свій.
-const telegramUsername = 'TвійНікнейм'; 
+const telegramUsername = '@valkysho_bot'; 
 
 // === ГОЛОВНИЙ СЛУХАЧ: Чекаємо, поки вся сторінка завантажиться ===
 document.addEventListener('DOMContentLoaded', () => {
